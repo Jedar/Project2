@@ -1,0 +1,99 @@
+main{
+    min-height: 480px;
+}
+.page-title{
+    font-size: x-large;
+    font-weight: normal;
+    margin-top: 1.5em;
+    margin-left: 2em;
+}
+.item-wrapper{
+    margin: 1em 3em;
+    background-color: #eeeeee;
+    border: 0.01em solid #7990a3;
+    padding: 2em;
+}
+.item-like{
+    height: 8.5em;
+    background-color: #fff6c2;
+    border: 0.01em solid #ffd26f;
+    padding: 1.5em;
+    margin-bottom: 1em;
+}
+.item-like figure{
+    float: left;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+.item-like img{
+    height: 8em;
+    width: 8em;
+}
+.item-name{
+    overflow: hidden;
+    width: 30em;
+}
+.item-name h3{
+    font-size: large;
+    font-weight: normal;
+    font-style: italic;
+    font-family: "Courier New",Serif;
+    margin: 1em;
+    height: 1.5em;
+}
+.item-name p{
+    font-size: large;
+    font-weight: normal;
+    font-style: italic;
+    font-family: "Courier New",Serif;
+    margin: 1em;
+    height: 1.5em;
+}
+.bt-price{
+    width: 10em;
+    background-color: #2eddff;
+    border: 0.01em solid #00b0ff;
+    padding: 0.3em 0.4em;
+    margin-right: 6em;
+    margin-left: 2.5em;
+}
+.bt-delete {
+    width: 5em;
+    background-color: #f56969;
+    border: 0.01em solid #f50057;
+    padding: 0.3em 0.4em
+}
+.pay-div{
+    text-align: right;
+    padding: 3em 3em 1em 0;
+}
+#bt-pay{
+    background-color: #70eebb;
+    border: 0.01em solid #33ee70;
+    padding: 0.6em 2em;
+}
+/*paging elements*/
+.paging-div{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.paging-div ul{
+    list-style-type: none;
+    text-align: center;
+}
+.paging-div li{
+    display: inline-block;
+}
+.paging-div a{
+    text-decoration: none;
+    color: #35d8ff;
+    border: 0.01em solid #35d8ff;
+    padding: 0.2em 0.3em;
+    width: 1.6em;
+    display: inline-block;
+}
+.paging-div .paging-stay{
+    background-color: #4ab6ff;
+    color: #ffffff;
+}

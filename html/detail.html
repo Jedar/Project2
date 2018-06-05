@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Art Store</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/basic.css">
+    <link href="../font/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" rel="script" src="../js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" rel="script" src="../js/popper.min.js"></script>
+    <script type="text/javascript" rel="script" src="../js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="row bg-dark text-white top-nav justify-content-center">
+    <div class="col-md-4">
+        <span id="top-tip">欢迎来到<span id="top-logo">Art Store </span></span>
+        <span class="login-or-sign"><a class="sign" href="#" data-toggle="modal" data-target="#signModal">登陆</a> 或 <a href="#" class="register" data-toggle="modal" data-target="#registerModal">注册</a> </span>
+    </div>
+    <ul class="col-md-3 offset-md-3 nav nav-justified">
+        <li id="top-signin" class="nav-item"><a href="#" class="nav-link"><i class="fa fa-user-circle"></i></a></li>
+        <li id="top-shoppingcart" class="nav-item"><a href="shoppingcart.html" class="nav-link"><i class="fa fa-shopping-cart"></i> 购物车 <span id="top-shoppingcart-num">0</span></a> </li>
+        <li id="top-signout" class="nav-item"><a href="#" class="nav-link"><i class="fa fa-sign-out"></i> 登出</a> </li>
+    </ul>
+</nav>
+<header class="normal-header">
+    <div class="header-top row justify-content-center">
+        <h2 class="logo col-md-3">Art Store</h2>
+        <div class="searchBar col-md-3 offset-md-4 row">
+            <input type="search" placeholder="搜索" class="form-control col-9 form-control-sm">
+            <button type="button" class="btn btn-primary btn-sm col-2"><i class="fa fa-search"></i> </button>
+        </div>
+    </div>
+    <nav class="row bg-light" id="header-nav">
+        <ul class="nav nav-tabs nav-justified col-md-5 offset-md-1">
+            <li class="nav-item"><a href="home.html" class="nav-link">首页</a></li>
+            <li class="nav-item"><a href="search.html" class="nav-link">搜索</a></li>
+            <li class="nav-item"><a href="detail.html" class="nav-link active">详情</a></li>
+            <li class="nav-item"><a href="#" class="nav-link disabled">发布艺术品</a> </li>
+        </ul>
+    </nav>
+    <div id="track-div">
+        <ul class="track nav">
+            <li class="arrow">您的足迹： </li>
+            <li><a href="home.html" class="nav-link">首页</a></li>
+            <li class="arrow"><i class="fa fa-arrow-right"></i></li>
+            <li><a href="search.html" class="nav-link">搜索</a></li>
+            <li class="arrow"><i class="fa fa-arrow-right"></i></li>
+            <li><a href="search.html" class="nav-link">首页</a></li>
+        </ul>
+    </div>
+</header>
+<main class="row justify-content-center">
+    <section class="detail-div col-md-8">
+        <div class="container">
+            <h2 class="goods-name">Mother and Child(Olga and Son)</h2>
+            <a class="goods-author" href="search.html">By Nike</a>
+        </div>
+        <div class="row">
+            <figure class="detail-fig col-md-5">
+                <div class="box" id="box">
+                    <div id="smallBox" class="small">
+                        <img src="images/works/average/103030.jpg" width="350" alt="" />
+                        <div id="mask" class="mask"></div>
+                    </div>
+                    <div id="bigBox" class="big">
+                        <img src="images/works/large/103030.jpg" id="bigImg" width="800" alt="" />
+                    </div>
+                </div>
+            </figure>
+            <div class="col-md-7" id="details">
+                <p class="description">Introduce: This work is amazing but there is no introduction for it.</p>
+                <p class="price-p">price: <span id="price">100,000</span> </p>
+                <div>
+                    <button id="bt-addToWish" class="btn btn-primary btn-sm"><i class="fa fa-star"></i> Add to Wish List</button>
+                    <button id="bt-addToCart" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Add to Shopping Cart</button>
+                </div>
+                <table class="table table-striped">
+                    <tr><th></th><th>Products Details</th></tr>
+                    <tr><td>Date:</td><td>1922</td></tr>
+                    <tr><td>Medium:</td><td>Oil on canvas</td></tr>
+                    <tr><td>Dimensions:</td><td>100cm * 80cm</td></tr>
+                    <tr><td>Home:</td><td>Baltimore Art Museum</td></tr>
+                    <tr><td>Genres:</td><td>Neoclassical</td></tr>
+                    <tr><td>Subject:</td><td>People,Family</td></tr>
+                    <tr><td>Heat:</td><td>13</td></tr>
+                </table>
+            </div>
+        </div>
+    </section>
+    <aside class="asideBar col-md-2">
+        <div class="list-group" id="artist-list">
+            <span class="list-group-item list-group-item-info">流行艺术家</span>
+            <a href="search.html" class="list-group-item list-group-item-action">cnasido</a>
+            <a href="search.html" class="list-group-item list-group-item-action">adfgg</a>
+            <a href="search.html" class="list-group-item list-group-item-action">afgwerfga</a>
+            <a href="search.html" class="list-group-item list-group-item-action">wadwd</a>
+            <a href="search.html" class="list-group-item list-group-item-action">efeh</a>
+            <a href="search.html" class="list-group-item list-group-item-action">gkjri</a>
+            <a href="search.html" class="list-group-item list-group-item-action">opwi</a>
+        </div>
+        <div class="list-group" id="genres-list">
+            <span class="list-group-item list-group-item-info">流行流派</span>
+            <a href="search.html" class="list-group-item list-group-item-action">Classic</a>
+            <a href="search.html" class="list-group-item list-group-item-action">Cubuim</a>
+            <a href="search.html" class="list-group-item list-group-item-action">Impresssion</a>
+            <a href="search.html" class="list-group-item list-group-item-action">Banrosn</a>
+            <a href="search.html" class="list-group-item list-group-item-action">nangsu</a>
+        </div>
+    </aside>
+</main>
+<div class="hidePane">
+    <div id="tip" class="hidden">
+        <i class="fa fa-check"></i>
+        <span class="tip-content"></span>
+    </div>
+    <div class="modal hidden" id="signModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">登陆 Art Store</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="user-name">用户名：</label>
+                            <input class="form-input" type="text" id="user-name" placeholder="请输入用户名">
+                            <div class="conflictDiv"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-psw">密码：</label>
+                            <input class="form-input" type="password" id="user-psw">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-check">验证码：</label>
+                            <input class="form-input" type="text" id="user-check">
+                            <label class="check-number"></label>
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="signModal-submit">登陆</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal hidden" id="registerModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">注册 Art Store</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="user-name">昵称：</label>
+                            <input class="form-input" type="text" id="register-name" placeholder="请输入用户名">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-psw">密码：</label>
+                            <input class="form-input" type="password" id="register-psw" placeholder="密码">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-name">确认密码：</label>
+                            <input class="form-input" type="password" id="register-sure" placeholder="确认密码">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-name">邮箱：</label>
+                            <input class="form-input" type="email" id="register-email" placeholder="邮箱">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-name">电话：</label>
+                            <input class="form-input" type="tel" id="register-phone" placeholder="电话">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-name">地址：</label>
+                            <input class="form-input" type="text" id="register-address" placeholder="地址">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">注册</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="bg-dark text-white">
+    <div>Produced and maintained by Jed in April,2018.</div>
+</footer>
+</body>
+</html>

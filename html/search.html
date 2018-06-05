@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Art Store</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/basic.css">
+    <link rel="stylesheet" href="../css/search.css">
+    <link href="../font/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" rel="script" src="../js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" rel="script" src="../js/popper.min.js"></script>
+    <script type="text/javascript" rel="script" src="../js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="row bg-dark text-white top-nav justify-content-center">
+    <div class="col-md-4">
+        <span id="top-tip">欢迎来到<span id="top-logo">Art Store </span></span>
+        <span class="login-or-sign"><a class="sign" href="#" data-toggle="modal" data-target="#signModal">登陆</a> 或 <a href="#" class="register" data-toggle="modal" data-target="#registerModal">注册</a> </span>
+    </div>
+    <ul class="col-md-3 offset-md-3 nav nav-justified">
+        <li id="top-signin" class="nav-item"><a href="#" class="nav-link"><i class="fa fa-user-circle"></i></a></li>
+        <li id="top-shoppingcart" class="nav-item"><a href="shoppingcart.html" class="nav-link"><i class="fa fa-shopping-cart"></i> 购物车 <span id="top-shoppingcart-num">0</span></a> </li>
+        <li id="top-signout" class="nav-item"><a href="#" class="nav-link"><i class="fa fa-sign-out"></i> 登出</a> </li>
+    </ul>
+</nav>
+<header class="normal-header">
+    <div class="header-top row justify-content-center">
+        <h2 class="logo col-md-3">Art Store</h2>
+        <div class="searchBar col-md-3 offset-md-4 row">
+            <input type="search" placeholder="搜索" class="form-control col-9 form-control-sm">
+            <button type="button" class="btn btn-primary btn-sm col-2"><i class="fa fa-search"></i> </button>
+        </div>
+    </div>
+    <nav class="row bg-light" id="header-nav">
+        <ul class="nav nav-tabs nav-justified col-md-5 offset-md-1">
+            <li class="nav-item"><a href="home.html" class="nav-link">首页</a></li>
+            <li class="nav-item"><a href="search.html" class="nav-link active">搜索</a></li>
+            <li class="nav-item"><a href="detail.html" class="nav-link">详情</a></li>
+            <li class="nav-item"><a href="#" class="nav-link disabled">发布艺术品</a> </li>
+        </ul>
+    </nav>
+    <div id="track-div">
+        <ul class="track nav">
+            <li class="arrow">您的足迹： </li>
+            <li><a href="home.html" class="nav-link">首页</a></li>
+            <li class="arrow"><i class="fa fa-arrow-right"></i></li>
+            <li><a href="search.html" class="nav-link">搜索</a></li>
+            <li class="arrow"><i class="fa fa-arrow-right"></i></li>
+            <li><a href="search.html" class="nav-link">首页</a></li>
+        </ul>
+    </div>
+</header>
+<main>
+    <h2 class="page-title">搜索结果:</h2>
+    <div class="sortbar">
+        <form method="get" action="" name="sort">
+            <p>排序方式 &nbsp;
+                价格:<input type="radio" name="sort" value="price">
+                热度:<input type="radio" name="sort" value="heat">
+                标题:<input type="radio" name="sort" value="title"></p>
+        </form>
+    </div>
+    <div class="item-box">
+        <div class="item">
+            <figure>
+                <a href="detail.html?path=005050.jpg"><img src="images/works/medium/005050.jpg"></a>
+            </figure>
+            <div class="item-name">
+                <h3>A Man With...</h3>
+                <p>Jitian</p>
+            </div>
+            <p>This portrait was eloquently described by Giorgio.</p>
+            <div>
+                <a class="item-button" href="detail.html?path=005050.jpg">查看</a>
+                <a class="item-button" href="#">热度<span class="heat-number">10</span> </a>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <a href="detail.html?path=001130.jpg"><img src="images/works/medium/001130.jpg"></a>
+            </figure>
+            <div class="item-name">
+                <h3>A Sunday</h3>
+                <p>Ado min</p>
+            </div>
+            <p>It was proposed that Abstract speed.</p>
+            <div>
+                <a class="item-button" href="detail.html?path=001130.jpg">查看</a>
+                <a class="item-button" href="#">热度<span class="heat-number">8</span> </a>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <a href="detail.html?path=136010.jpg"><img src="images/works/medium/136010.jpg"></a>
+            </figure>
+            <div class="item-name">
+                <h3>Abstract alt</h3>
+                <p>Miro kindle</p>
+            </div>
+            <p>There is no instruction to this art.</p>
+            <div>
+                <a class="item-button" href="detail.html?path=136010.jpg">查看</a>
+                <a class="item-button" href="#">热度<span class="heat-number">9</span> </a>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <a href="detail.html?path=018030.jpg"><img src="images/works/medium/018030.jpg"></a>
+            </figure>
+            <div class="item-name">
+                <h3>Pod Frat</h3>
+                <p>Stave pole</p>
+            </div>
+            <p>Pod Frat was painted in oil canvas.</p>
+            <div>
+                <a class="item-button" href="detail.html?path=018030.jpg">查看</a>
+                <a class="item-button" href="#">热度<span class="heat-number">6</span> </a>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <a href="detail.html?path=019010.jpg"><img src="images/works/medium/019010.jpg"></a>
+            </figure>
+            <div class="item-name">
+                <h3>Adoration</h3>
+                <p>Lippi</p>
+            </div>
+            <p>Adoration in the forest is painted in...</p>
+            <div>
+                <a class="item-button" href="detail.html?path=019010.jpg">查看</a>
+                <a class="item-button" href="#">热度<span class="heat-number">4</span> </a>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <a href="detail.html?path=017050.jpg"><img src="images/works/medium/017050.jpg"></a>
+            </figure>
+            <div class="item-name">
+                <h3>Acrobat a..</h3>
+                <p>Poblo</p>
+            </div>
+            <p>There is no instruction to this art.</p>
+            <div>
+                <a class="item-button" href="detail.html?path=017050.jpg">查看</a>
+                <a class="item-button" href="#">热度<span class="heat-number">6</span> </a>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <a href="detail.html?path=045020.jpg"><img src="images/works/medium/045020.jpg"></a>
+            </figure>
+            <div class="item-name">
+                <h3>Age Of Inn...</h3>
+                <p>John</p>
+            </div>
+            <p>Age of Inn is an oil on canvas.</p>
+            <div>
+                <a class="item-button" href="detail.html?path=045020.jpg">查看</a>
+                <a class="item-button" href="#">热度<span class="heat-number">7</span> </a>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <a href="detail.html?path=103030.jpg"><img src="images/works/medium/103030.jpg"></a>
+            </figure>
+            <div class="item-name">
+                <h3>Alba Madonna</h3>
+                <p>Rapheal</p>
+            </div>
+            <p>Alba Madonna was painted 400 years ago.</p>
+            <div>
+                <a class="item-button" href="detail.html?path=103030.jpg">查看</a>
+                <a class="item-button" href="#">热度<span class="heat-number">4</span> </a>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <a href="detail.html?path=019050.jpg"><img src="images/works/medium/019050.jpg"></a>
+            </figure>
+            <div class="item-name">
+                <h3>Reap leap</h3>
+                <p>Lop Naz</p>
+            </div>
+            <p>Reap leap is a famous painting 100 years ago.</p>
+            <div>
+                <a class="item-button" href="detail.html?path=019050.jpg">查看</a>
+                <a class="item-button" href="#">热度<span class="heat-number">8</span> </a>
+            </div>
+        </div>
+    </div>
+    <div class="paging-div">
+        <ul>
+            <li><a href="#">< </a></li>
+            <li><a href="#" class="paging-stay"> 1</a></li>
+            <li><a href="#"> 2</a></li>
+            <li><a href="#"> 3</a></li>
+            <li><a href="#"> 4</a></li>
+            <li><a href="#"> 5</a></li>
+            <li><a href="#"> 6</a></li>
+            <li><a href="#"> 7</a></li>
+            <li><a href="#"> 8</a></li>
+            <li><a href="#"> 9</a></li>
+            <li><a href="#">10</a></li>
+            <li><a href="#">11</a></li>
+            <li><a href="#">12</a></li>
+            <li><a href="#">13</a></li>
+            <li><a href="#">14</a></li>
+            <li><a href="#">15</a></li>
+            <li><a href="#">16</a></li>
+            <li><a href="#">17</a></li>
+            <li><a href="#">18</a></li>
+            <li><a href="#">19</a></li>
+            <li><a href="#">20</a></li>
+            <li><a href="#">></a></li>
+        </ul>
+    </div>
+</main>
+<div class="hidePane">
+    <div class="tip">
+        <i class="fa fa-check"></i>
+        <span class="tip-content"></span>
+    </div>
+    <div class="modal" id="signModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">登陆 Art Store</h4>
+                    <button type="button" class="modal-close" id="signModal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="user-name">用户名：</label>
+                            <input class="form-input" type="text" id="user-name" placeholder="请输入用户名">
+                            <div class="conflictDiv"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-psw">密码：</label>
+                            <input class="form-input" type="password" id="user-psw">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-check">验证码：</label>
+                            <input class="form-input" type="text" id="user-check">
+                            <label class="check-number"></label>
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-submit" id="signModal-submit">登陆</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="registerModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">注册 Art Store</h4>
+                    <button type="button" class="modal-close" id="registerModal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="user-name">昵称：</label>
+                            <input class="form-input" type="text" id="register-name" placeholder="请输入用户名">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-psw">密码：</label>
+                            <input class="form-input" type="password" id="register-psw" placeholder="密码">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-name">确认密码：</label>
+                            <input class="form-input" type="password" id="register-sure" placeholder="确认密码">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-name">邮箱：</label>
+                            <input class="form-input" type="email" id="register-email" placeholder="邮箱">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-name">电话：</label>
+                            <input class="form-input" type="tel" id="register-phone" placeholder="电话">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-name">地址：</label>
+                            <input class="form-input" type="text" id="register-address" placeholder="地址" onchange="checkConflict(9)">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-submit" id="registerModal-submit">注册</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>Produced and maintained by Jed in April,2018.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Art Store</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/basic.css">
+    <link href="../font/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" rel="script" src="../js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" rel="script" src="../js/popper.min.js"></script>
+    <script type="text/javascript" rel="script" src="../js/bootstrap.min.js"></script>
+</head>
+<body>
+<header class="slider">
+    <nav class="home-nav">
+        <div class="home-logodiv"><span class="home-logo">Art Store</span> <span class="logoBehind">Where you find GENIUS and EXTROORDINARY</span></div>
+        <ul class="home-navbar">
+            <li><a href="home.html">首页</a></li>
+            <li><a href="search.html">搜索</a></li>
+            <li><a href="detail.html">详情</a></li>
+            <li><a href="#" class="sign">登陆</a></li>
+            <li><a href="#" class="register">注册</a></li>
+        </ul>
+    </nav>
+    <ul class="slider-main">
+        <li class="slider-panel">
+            <div class="hotArtDiv">
+                <h2>Raohael</h2>
+                <p>Deeply influenced the art of the twentieth Century.</p>
+                <button class="bt-learnMore">Learn More</button>
+            </div>
+            <img alt="" src="images/works/medium/017030.jpg">
+        </li>
+        <li class="slider-panel">
+            <div class="hotArtDiv">
+                <h2>Snow Field</h2>
+                <p>Deeply influenced the art of the twentieth Century.</p>
+                <button class="bt-learnMore">Learn More</button>
+            </div>
+            <img alt="" src="images/works/medium/118060.jpg">
+        </li>
+        <li class="slider-panel">
+            <div class="hotArtDiv">
+                <h2>Tim City</h2>
+                <p>Deeply influenced the art of the twentieth Century.</p>
+                <button class="bt-learnMore">Learn More</button>
+            </div>
+            <img alt="" src="images/works/medium/131020.jpg">
+        </li>
+        <li class="slider-panel">
+            <div class="hotArtDiv">
+                <h2>Emperor</h2>
+                <p>Deeply influenced the art of the twentieth Century.</p>
+                <button>Learn More</button>
+            </div>
+            <img alt="" src="images/works/medium/005060.jpg">
+        </li>
+    </ul>
+    <div class="slider-extra">
+        <ul class="slider-nav">
+            <li class="slider-item"> </li>
+            <li class="slider-item"> </li>
+            <li class="slider-item"> </li>
+            <li class="slider-item"> </li>
+        </ul>
+        <div class="slider-page">
+            <a class="slider-pre" href="javascript:"><</a>
+            <a class="slider-next" href="javascript:">></a>
+        </div>
+    </div>
+
+</header>
+<main>
+    <section class="displaySec">
+        <figure><img src="images/artists/medium/1.jpg"></figure>
+        <h3>Portrait of Elenor Toloks</h3>
+        <p>Her books is organized into sections by epochs and ruling governments;at times,
+        the compression of such a long history into this short space make it hard to digest,
+        but Lancaster stops often to recount captivating legends and anecdotes. She seems to
+        have a quote from every writer or thinker who ever visited Naples or its surroundings.</p>
+        <a href="detail.html">View Details</a>
+    </section>
+    <section class="displaySec">
+        <figure><img src="images/artists/medium/10.jpg"></figure>
+        <h3>Portrait of Elenor Toloks</h3>
+        <p>As she stresses, for most of its history, Naples was a preeminent European city,
+        a thriving home of music, philosophy, painting and science. Her book is organized into
+        epochs and ruling governments; at times, the compressionof such a long history into
+        this short space makes it hard to digest, but Lancaster stops often to recount
+        captivating legends and anecdotes.</p>
+        <a href="detail.html">View Details</a>
+    </section>
+    <section class="displaySec">
+        <figure><img src="images/artists/medium/15.jpg"></figure>
+        <h3>Portrait of Elenor Toloks</h3>
+        <p>With this engaging history, Lancaster, a professor of Italian, seeks to restore
+        honor to Naples, which many Italians and prospective visitors see as a city
+        of little more than pickpockets and pizza. As she stresses, for most of its history, Naples was a preeminent European city,
+            a thriving home of music, philosophy, painting and science.</p>
+        <a href="detail.html">View Details</a>
+    </section>
+</main>
+<div class="hidePane">
+    <div class="tip">
+        <i class="fa fa-check"></i>
+        <span class="tip-content"></span>
+    </div>
+    <div class="modal" id="signModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">登陆 Art Store</h4>
+                    <button type="button" class="modal-close" id="signModal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="user-name">用户名：</label>
+                            <input class="form-input" type="text" id="user-name" placeholder="请输入用户名">
+                            <div class="conflictDiv"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-psw">密码：</label>
+                            <input class="form-input" type="password" id="user-psw">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-check">验证码：</label>
+                            <input class="form-input" type="text" id="user-check">
+                            <label class="check-number"></label>
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-submit" id="signModal-submit">登陆</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="registerModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">注册 Art Store</h4>
+                    <button type="button" class="modal-close" id="registerModal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="user-name">昵称：</label>
+                            <input class="form-input" type="text" id="register-name" placeholder="请输入用户名">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-psw">密码：</label>
+                            <input class="form-input" type="password" id="register-psw" placeholder="密码">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-name">确认密码：</label>
+                            <input class="form-input" type="password" id="register-sure" placeholder="确认密码">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-name">邮箱：</label>
+                            <input class="form-input" type="email" id="register-email" placeholder="邮箱">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-name">电话：</label>
+                            <input class="form-input" type="tel" id="register-phone" placeholder="电话">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-name">地址：</label>
+                            <input class="form-input" type="text" id="register-address" placeholder="地址" onchange="checkConflict(9)">
+                            <div class="conflictDiv"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-submit" id="registerModal-submit">注册</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>Produced and maintained by Jed in April,2018.</p>
+</footer>
+</body>
+</html>

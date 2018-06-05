@@ -1,0 +1,93 @@
+main{
+    min-width: 50%;
+}
+.page-title{
+    font-size: x-large;
+    font-weight: normal;
+    margin-top: 1.5em;
+    margin-left: 2em;
+}
+.sortbar{
+    font-size: 0.9em;
+    overflow: hidden;
+}
+.sortbar form{
+    float: right;
+    width: 20em;
+    padding: 0.5em 0.3em;
+}
+.item-box{
+    padding: 0.5em 3.5em;
+    height: auto;
+    overflow: hidden;
+}
+.item-box figure{
+    float: left;
+    overflow: hidden;
+}
+.item{
+    margin: 0.5em 1em;
+    background-color: #fff4d9;
+    border: 0.1em solid #ffd86f;
+    padding: 1em;
+    float: left;
+    width: 25em;
+    height: 17em;
+}
+.item img{
+    height: 12em;
+    width: 12em;
+}
+.item-name{
+    margin: 1em;
+    overflow: hidden;
+    width: 12em;
+}
+.item-name h3{
+    font-size: large;
+    font-weight: normal;
+    font-style: italic;
+    font-family: "Courier New",Serif;
+    margin: 1em;
+    height: 3em;
+}
+.item-name p{
+    font-size: large;
+    font-weight: normal;
+    font-style: italic;
+    font-family: "Courier New",Serif;
+    margin: 1em;
+    height: 3.5em;
+}
+.item-button{
+    text-decoration: none;
+    color: #000000;
+    display: inline-block;
+    margin: 1em 4em;
+    border: 0.01em solid #00b0ff;
+    background-color: #a1ceff;
+    padding: 0.2em 0.5em;
+}
+.paging-div{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.paging-div ul{
+    list-style-type: none;
+    text-align: center;
+}
+.paging-div li{
+    display: inline-block;
+}
+.paging-div a{
+    text-decoration: none;
+    color: #35d8ff;
+    border: 0.01em solid #35d8ff;
+    padding: 0.2em 0.3em;
+    width: 1.6em;
+    display: inline-block;
+}
+.paging-div .paging-stay{
+    background-color: #4ab6ff;
+    color: #ffffff;
+}

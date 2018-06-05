@@ -1,0 +1,130 @@
+main{
+    min-height: 500px;
+}
+#top-tip{
+    font-size: 1.6em;
+}
+.top-nav{
+    padding: 0.6em 0;
+    font-size: 0.8em;
+    color: white;
+}
+.top-nav a:link{
+    color: white;
+}
+.top-nav a:hover{
+    color: #40c4ff;
+}
+.header-top{
+    margin: 1em 0;
+}
+#header-nav a{
+    color: #959595;
+}
+#header-nav a:hover{
+    color: #6d6d6d;
+}
+#track-div .arrow{
+    padding: 0.5em 0;
+}
+#details *{
+    margin: 0.3em 0;
+}
+#details p{
+    font-size: 1.5em;
+}
+#price{
+    color: #f50057;
+}
+.hidden{
+    display: none;
+}
+/*footer style*/
+footer{
+    margin-top: 2em;
+}
+footer div{
+    text-align: center;
+}
+/*home part*/
+#homeCarousel img{
+    width:100%;
+    height: 45em;
+}
+#homeCarousel{
+    height: 45em;
+    margin-bottom: 2em;
+}
+#homeCarousel .home-nav{
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    color: white;
+}
+#homeCarousel .home-nav .home-logo{
+    font-size: 2em;
+}
+#homeCarousel .home-nav .logoBehind{
+    font-family: Papyrus,Serif;
+}
+#homeCarousel .home-nav a{
+    margin-top: 0.5em;
+    color: white;
+}
+#homeCarousel .home-nav a:hover{
+    color: #717171;
+}
+#homeCarousel .carousel-caption{
+    bottom: 250px;
+}
+#homeCarousel .carousel-caption h3{
+    font-size: 3.5em;
+}
+#homeCarousel .carousel-caption p{
+    margin: 0.5em auto;
+    width: 50%;
+    font-size: 1.5em;
+}
+#homeCarousel .carousel-caption button{
+    opacity: 0.5;
+}
+#home-hot-part .featurette{
+    margin: 2em 2em;
+    vertical-align: center;
+}
+#home-hot-part .featurete-heading{
+    margin: 3em auto 0.5em auto;
+    color: #6b6b6b;
+}
+#home-hot-part img{
+    width: 400px;
+    height: 400px;
+}
+/*modal part style*/
+.form-group{
+    text-align: center;
+    margin: 1.5em 2em;
+}
+.form-group label{
+    display: inline-block;
+    width: 30%;
+}
+.form-group input{
+    width: 60%;
+}
+#user-check{
+    width: 30%;
+}
+.check-number{
+    width: 30%;
+    background-color: #c6f6ff;
+    border: 1px solid #6cfffa;
+}
+.conflictDiv{
+    color: #f55911;
+    text-align: left;
+    margin: 0.5em 20% 0 40%;
+    background-color: #fffad0;
+    border: 1px solid #ffef73;
+}
