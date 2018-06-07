@@ -1,15 +1,16 @@
 main{
-    min-height: 500px;
+    min-height: 700px;
 }
 #top-tip{
     font-size: 1.6em;
 }
 .top-nav{
+    margin: 0;
     padding: 0.6em 0;
     font-size: 0.8em;
     color: white;
 }
-.top-nav a:link{
+.top-nav a{
     color: white;
 }
 .top-nav a:hover{
@@ -40,9 +41,6 @@ main{
     display: none;
 }
 /*footer style*/
-footer{
-    margin-top: 2em;
-}
 footer div{
     text-align: center;
 }
@@ -104,7 +102,7 @@ footer div{
 /*modal part style*/
 .form-group{
     text-align: center;
-    margin: 1.5em 2em;
+    margin-top: 2em;
 }
 .form-group label{
     display: inline-block;
@@ -112,6 +110,7 @@ footer div{
 }
 .form-group input{
     width: 60%;
+    display: inline-block;
 }
 #user-check{
     width: 30%;
@@ -124,7 +123,30 @@ footer div{
 .conflictDiv{
     color: #f55911;
     text-align: left;
-    margin: 0.5em 20% 0 40%;
+    margin: 0.5em 20% 0 35%;
     background-color: #fffad0;
     border: 1px solid #ffef73;
+}
+/*login part*/
+.login-img{
+    background:url(../resources/img/63.jpg) no-repeat center;
+    background-size:100%;
+    margin: 0;
+}
+.login-img .card{
+    padding: 0;
+    margin-top: 5em;
+    margin-bottom: 12em;
+}
+/*register part*/
+.register-img{
+    background:url(../resources/img/63.jpg) no-repeat center;
+    /*background-size:100%;*/
+    background-size: 100% 100%;
+    margin: 0;
+}
+.register-img .card{
+    padding: 0;
+    margin-top: 3em;
+    margin-bottom: 4em;
 }
