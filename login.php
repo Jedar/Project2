@@ -21,7 +21,7 @@
             <div class="form-group">
                 <label for="user-check">验证码：</label>
                 <input class="form-control" type="text" id="user-check" name="user-check">
-                <label class="check-number">1234</label>
+                <label class="check-number"></label>
                 <div class="conflictDiv hidden"><i class="fa fa-exclamation-circle fa-lg"></i> </div>
             </div>
         </form>
@@ -30,8 +30,6 @@
         </div>
     </div>
 </main>
-<footer class="bg-dark text-white">
-    <div>Produced and maintained by Jed in April,2018.</div>
-</footer>
+<?php include 'foot.inc.php';?>
 </body>
 </html>

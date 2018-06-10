@@ -26,7 +26,7 @@ $(document).ready(function () {
         checkNumber = Math.floor(Math.random()*9000+1000);
         $(".check-number").text(checkNumber);
     }
-    $("#bt-register").click(function () {
+    $("#bt-register").on('click',function () {
         checkName();
         checkPsw();
         checkPswSure();
@@ -35,7 +35,31 @@ $(document).ready(function () {
         checkAddress();
         check();
         if (registerArr[0]&&registerArr[1]&&registerArr[2]&&registerArr[3]&&registerArr[4]&&registerArr[5]&&registerArr[6]){
-            alert('success');
+            $.post('registerverify.php',{
+                'name':rgstName.val(),
+                'psw':rgstPsw.val(),
+                'email':rgstEmail.val(),
+                'tel':rgstPhone.val(),
+                'address':rgstAddress.val()
+            },function (result) {
+                // result = JSON.parse(result);
+                if (!result.success){
+                    switch (result.type){
+                        case 'name':
+                            registerArr[0]=false;
+                            rgstName.next().html(getInfo("用户名已经存在"));
+                            rgstName.val("");
+                            rgstName.next().removeClass("hidden");
+                            break;
+                        case 'error':
+                            alert(result.message);
+                            break;
+                    }
+                }
+                else {
+                    window.location = 'home.php';
+                }
+            });
         }
     });
     function checkName() {

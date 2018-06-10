@@ -28,15 +28,6 @@ main{
 #track-div .arrow{
     padding: 0.5em 0;
 }
-#details *{
-    margin: 0.3em 0;
-}
-#details p{
-    font-size: 1.5em;
-}
-#price{
-    color: #f50057;
-}
 .hidden{
     display: none;
 }
@@ -74,14 +65,14 @@ footer div{
     color: #717171;
 }
 #homeCarousel .carousel-caption{
-    bottom: 250px;
+    bottom: 100px;
 }
 #homeCarousel .carousel-caption h3{
     font-size: 3.5em;
 }
 #homeCarousel .carousel-caption p{
     margin: 0.5em auto;
-    width: 50%;
+    width: 65%;
     font-size: 1.5em;
 }
 #homeCarousel .carousel-caption button{

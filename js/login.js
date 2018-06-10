@@ -49,7 +49,33 @@ $(document).ready(function () {
             signArr[2]=true;
         }
         if (signArr[0]&&signArr[1]&&signArr[2]){
-            $("input").val("");
+            $.post('checkpassword.php',{
+                'name':userName.val(),
+                'psw':userPsw.val(),
+            },function(result) {
+                if (result['success']){
+                    window.location = "home.php";//some problem here
+                }
+                else {
+                    switch (result['type']){
+                        case "password":
+                            userPsw.next().html(getInfo("密码错误"));
+                            userPsw.next().removeClass("hidden");
+                            signArr[1]=false;
+                            userPsw.val("");
+                            break;
+                        case "username":
+                            userName.next().html(getInfo("用户名不存在"));
+                            userName.next().removeClass("hidden");
+                            signArr[0]=false;
+                            signArr[1]=false;
+                            userPsw.val("");
+                            break;
+                        default:
+                            alert("服务器繁忙，请稍后重试");
+                    }
+                }
+            });
         }
     });
 });

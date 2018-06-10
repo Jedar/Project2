@@ -1,28 +1,43 @@
-<?php include 'db_psw.php'; ?>
+<?php include 'db_connect.php'; ?>
 <?php
 session_start();
 ob_start();
 header("Content-type: application/json");
 date_default_timezone_set('UTC');
-$cnn = new mysqli($host,$dbuser,$dbpsw,'artstoredb');
-
-if ($cnn->connect_errno){
-    echo '<p>Error: Could not connect to database.<br/>Please try again later</p>';
-}
+$cnn = getConnect();
 try{
-    $userName = $_POST['user-name'];
-    $userPsw = $_POST['user-psw'];
-    $query = "SELECT * FROM users WHERE name = '$userName' AND password = '$userPsw'";
+    $userName = $_POST['name'];
+    $userPsw = $_POST['psw'];
+    $query = "SELECT * FROM users WHERE name = '$userName'";
     $result = $cnn->query($query);
-    if ($row = $result->fetch_assoc()){
-        $_SESSION['isSigned'] = true;
-        $_SESSION['userID'] = $row['userID'];
-        $_SESSION['name'] = $row['name'];
-        $_SESSION['balance'] = $row['balance'];
-        $_SESSION['tel'] = $row['tel'];
-        $_SESSION['email'] = $row['email'];
-        $_SESSION['address'] = $row['address'];
-        
+    $row = $result->fetch_assoc();
+    if ($row){
+        if ($userPsw === $row['password']){
+            $_SESSION['isSigned'] = true;
+            $_SESSION['userID'] = $row['userID'];
+            $_SESSION['name'] = $row['name'];
+            $_SESSION['balance'] = $row['balance'];
+            $_SESSION['tel'] = $row['tel'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['address'] = $row['address'];
+            print json_encode([
+                'success' => true
+            ]);
+        }
+        else{
+            print json_encode([
+                'success'=>false,
+                'type'=>'password',
+                'message'=>"wrong password"
+            ]);
+        }
+    }
+    else{
+        print json_encode([
+            'success'=>false,
+            'type'=>'username',
+            'message'=>"user does not exist"
+        ]);
     }
 }
 catch (Exception $e){

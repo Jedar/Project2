@@ -1,12 +1,12 @@
 .box {
-    width: 300px;
-    height: 400px;
+    width: 400px;
+    height: 500px;
     border: 1px solid #ccc;
     position: relative;
 }
 .big {
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
     position: absolute;
     top: 0;
     left: 385px;
@@ -29,12 +29,24 @@
     position: relative;
 }
 .small img{
-    width: 300px;
-    height: 400px;
+    width: 400px;
+    height: 500px;
 }
 .box img {
     vertical-align: top;
 }
 #bigBox img {
     position: absolute;
+}
+#details *{
+    margin: 0.3em 0;
+}
+#details p{
+    font-size: 1.5em;
+}
+#details .introduction{
+    font-size: 1em;
+}
+#price{
+    color: #f50057;
 }

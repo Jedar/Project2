@@ -50,8 +50,6 @@
         </div>
     </div>
 </main>
-<footer class="bg-dark text-white">
-    <div>Produced and maintained by Jed in April,2018.</div>
-</footer>
+<?php require 'foot.inc.php';?>
 </body>
 </html>
