@@ -19,6 +19,9 @@ main{
 .header-top{
     margin: 1em 0;
 }
+#header-nav{
+    margin-right: 0;
+}
 #header-nav a{
     color: #959595;
 }
