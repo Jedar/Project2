@@ -1,0 +1,38 @@
+<?php require_once 'db_connect.php';?>
+<?php
+$cnn = getConnect();
+
+function insert($userID,$artworkID){
+    global $cnn;
+    $query = "INSERT INTO carts VALUES(NULL,?,?)";
+    $stmt = $cnn->prepare($query);
+    $stmt->bind_param('dd',$userID,$artworkID);
+    $stmt->execute();
+    if ($stmt->affected_rows > 0) {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+function isExist_in_carts($userID,$artworkID){
+    global $cnn;
+    $query = "SELECT * FROM carts WHERE artworkID = $artworkID AND userID = $userID";
+    $result = $cnn->query($query);
+    return ($result->num_rows > 0);
+}
+function getCart($userID){
+    global $cnn;
+    $query = "SELECT artworks.artworkID, artworks.artist, artworks.imageFileName, artworks.title, artworks.price, artworks.orderID FROM artworks, carts WHERE carts.userID = $userID AND carts.artworkID = artworks.artworkID";
+    $result = $cnn->query($query);
+    $arr = array();
+    while ($row = $result->fetch_assoc()){
+        array_push($arr,$row);
+    }
+    return $arr;
+}
+function getCartNum($userID){
+    $arr = getCart($userID);
+    return count($arr);
+}
+?>

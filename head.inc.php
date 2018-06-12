@@ -27,6 +27,7 @@
             echo '<script type="text/javascript" rel="script" src="js/magnify.js"></script>';
             break;
         case 2://search
+            echo '<script type="text/javascript" rel="script" src="js/search_pagination.js"></script>';
             echo '<link rel="stylesheet" href="css/search.css">';
             break;
         case 3://shopping cart

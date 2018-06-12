@@ -47,6 +47,9 @@
 #details .introduction{
     font-size: 1em;
 }
+#details button{
+    margin: 0.5em 1.5em;
+}
 #price{
     color: #f50057;
 }

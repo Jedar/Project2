@@ -2,7 +2,10 @@
 <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirm">-->
 <!--    打开模态框-->
 <!--</button>-->
-
+<div id="tip" class="hidden">
+    <i class="fa fa-check"></i>
+    <span class="tip-content"></span>
+</div>
 <div class="modal fade" id="confirm">
     <div class="modal-dialog">
         <div class="modal-content">

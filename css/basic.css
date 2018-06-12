@@ -144,3 +144,16 @@ footer div{
     margin-top: 3em;
     margin-bottom: 4em;
 }
+/*tip part*/
+#tip{
+    position: fixed;
+    top: 20%;
+    left: 47%;
+    right: 47%;
+    width: fit-content;
+    padding: 0.5em;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 0.3em 0.3em;
+    z-index: 100;
+}

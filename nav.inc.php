@@ -40,8 +40,8 @@ if ($pagetype > 0){
     <div class="header-top row justify-content-center">
         <h2 class="logo col-md-3">Art Store</h2>
         <div class="searchBar col-md-3 offset-md-4 row">
-            <input type="search" placeholder="搜索" class="form-control col-9 form-control-sm">
-            <button type="button" class="btn btn-primary btn-sm col-2"><i class="fa fa-search"></i> </button>
+            <input type="search" placeholder="搜索" class="form-control col-9 form-control-sm" id="search-input">
+            <button type="button" class="btn btn-primary btn-sm col-2" id="bt-search"><i class="fa fa-search"></i> </button>
         </div>
     </div>
     <nav class="row bg-light" id="header-nav">

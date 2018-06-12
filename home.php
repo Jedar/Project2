@@ -7,10 +7,10 @@
 <?php
 include 'db_connect.php';
 $cnn = getConnect();
-$query = "SELECT * FROM artworks ORDER BY view LIMIT 0,3";
+$query = "SELECT * FROM artworks ORDER BY view DESC LIMIT 0,3";
 $resultView = $cnn->query($query);
 $rowView = $resultView->fetch_assoc();
-$query = "SELECT * FROM artworks ORDER BY timeReleased LIMIT 0,3";
+$query = "SELECT * FROM artworks ORDER BY timeReleased DESC LIMIT 0,3";
 $resultTime = $cnn->query($query);
 $rowTime = $resultTime->fetch_assoc();
 function getDescription($des){
@@ -30,9 +30,9 @@ function getDescription($des){
             <span class="logoBehind">Where you find GENIUS and EXTROORDINARY</span>
         </div>
         <div class="nav col-md-4 offset-md-2">
-            <a href="home.html" class="nav-link">首页</a>
-            <a href="search.html" class="nav-link">搜索</a>
-            <a href="detail.html" class="nav-link">详情</a>
+            <a href="home.php" class="nav-link">首页</a>
+            <a href="search.php" class="nav-link">搜索</a>
+            <a href="detail.php" class="nav-link">详情</a>
             <?php
             if ($_SESSION['isSigned']){
                 echo '<a href="userpage.php" class="sign nav-link">个人</a>

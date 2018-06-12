@@ -20,7 +20,6 @@ if (!$row){
     $result = $cnn->query($query);
     $row = $result->fetch_assoc();
 }
-
 ?>
 <main class="row justify-content-center">
     <section class="detail-div col-md-8">
@@ -46,8 +45,10 @@ if (!$row){
                 <p class="introduction">Introduce: <?php echo $row['description'];?></p>
                 <p class="price-p">price: <span id="price"><?php echo $row['price'];?></span> </p>
                 <div>
-                    <button id="bt-addToWish" class="btn btn-primary btn-sm"><i class="fa fa-star"></i> Add to Wish List</button>
-                    <?php echo '<button id="bt-addToCart" class="btn btn-primary btn-sm'.(($row['orderID'])?' desabled':'').'"><i class="fa fa-shopping-cart"></i> Add to Shopping Cart</button>';?>
+                    <?php
+                    echo '<button id="bt-addToWish" class="btn btn-primary btn-sm'.((!is_null($row['orderID'])||!$_SESSION['isSigned'])?' disabled':'').'"><i class="fa fa-star"></i> Add to Wish List</button>';
+                    echo '<button id="bt-addToCart" class="btn btn-primary btn-sm'.((!is_null($row['orderID'])||!$_SESSION['isSigned'])?' disabled':'').'" data-target="'.$row['artworkID'].'"><i class="fa fa-shopping-cart"></i> Add to Shopping Cart</button>';
+                    ?>
                 </div>
                 <?php
                 echo '<table class="table table-striped">
