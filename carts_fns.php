@@ -15,6 +15,18 @@ function insert($userID,$artworkID){
         return false;
     }
 }
+function delete($userID, $artworkID){
+    global $cnn;
+    $query = "DELETE FROM carts WHERE artworkID = $artworkID AND userID = $userID";
+    $stmt = $cnn->prepare($query);
+    $stmt->execute();
+    if ($stmt->affected_rows > 0) {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 function isExist_in_carts($userID,$artworkID){
     global $cnn;
     $query = "SELECT * FROM carts WHERE artworkID = $artworkID AND userID = $userID";
@@ -34,5 +46,13 @@ function getCart($userID){
 function getCartNum($userID){
     $arr = getCart($userID);
     return count($arr);
+}
+function getCartPrice($userID){
+    $arr = getCart($userID);
+    $totalPrice = 0;
+    for ($i = 0; $i < count($arr);$i++){
+        $totalPrice+=$arr[$i]['price'];
+    }
+    return $totalPrice;
 }
 ?>

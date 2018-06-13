@@ -8,12 +8,14 @@
 <?php
 $cartInfo = getCart($_SESSION['userID']);
 $cartNum = count($cartInfo);
+$totalPrice = 0;
 ?>
 <main>
     <h2 class="page-title">购物车</h2>
     <div class="item-wrapper">
         <?php
         for ($i = 0; $i < $cartNum; $i++){
+            $totalPrice += $cartInfo[$i]['price'];
             echo '<div class="item-like">
         <figure>
         <img src="resources/img/'.$cartInfo[$i]['imageFileName'].'">
@@ -23,8 +25,8 @@ $cartNum = count($cartInfo);
         <p>'.$cartInfo[$i]['artist'].'</p>
         </div>
         <div>
-        <button class="bt-price"><i class="fa fa-star"></i> 价格:$<span class="item-price">'.$cartInfo[$i]['price'].'</span></button>
-        <button class="bt-delete"><i class="fa fa-sign-out"></i> 删除</button>
+        <button class="bt-price btn" data-id="'.$cartInfo[$i]['artworkID'].'"><i class="fa fa-star"></i> 价格:$<span class="item-price">'.$cartInfo[$i]['price'].'</span></button>
+        <button class="bt-delete btn" data-id="'.$cartInfo[$i]['artworkID'].'"><i class="fa fa-sign-out"></i> 删除</button>
         </div>
         </div>';
         }
@@ -43,7 +45,7 @@ $cartNum = count($cartInfo);
 <!--        </div>-->
 <!--        </div>-->
         <div class="pay-div">
-        <button id="bt-pay"><i class="fa fa-back"></i>结款:$000</button>
+        <button id="bt-pay" class="btn"><i class="fa fa-back"></i>结款:$<?php echo $totalPrice;?></button>
         </div>
     </div>
     <div class="paging-div">

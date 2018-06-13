@@ -33,7 +33,7 @@ $result=$result['pageInfo'];
                 <h3>'.$row['title'].'</h3>
                 <p>'.$row['artist'].'</p>
             </div>
-            <p>'.getIntroduction($row['description']).'</p>
+            <p>'.$row['description'].'</p>
             <div>
                 <a class="item-button" href="detail.php?itemID='.$row['artworkID'].'">查看</a>
                 <a class="item-button" href="#">热度<span class="heat-number">'.$row['view'].'</span> </a>

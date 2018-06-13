@@ -2,6 +2,7 @@
 <?php
 $cnn = getConnect();
 define('ITEMNUM',9);
+
 function getSearchResult($pageIndex){
     $pageIndex = intval($pageIndex);
     global $cnn;
@@ -50,7 +51,49 @@ function isExist_in_artworks($artworkID){
     $result = $cnn->query($query);
     return ($result->num_rows > 0);
 }
+function getOwner($artworkID){
+    global $cnn;
+    $query = "SELECT ownerID FROM artworks WHERE artworkID = $artworkID";
+    $result = $cnn->query($query);
+    $row = $result->fetch_assoc();
+    return $row['ownerID'];
+}
+function setOwner($userID,$artworkID,$orderID){
+    global $cnn;
+    $orderID = intval($orderID);
+    $query = "UPDATE artworks SET ownerID = $userID, orderID = $orderID WHERE artworkID = $artworkID";
+    $stmt = $cnn->prepare($query);
+    $stmt->execute();
+    return ($stmt->affected_rows > 0);
+}
+function isOrdered($artworkID){
+    global $cnn;
+    $query = "SELECT * FROM artworks WHERE artworkID = $artworkID";
+    $result = $cnn->query($query);
+    $row = $result->fetch_assoc();
+    return !is_null($row['orderID']);
+}
+function getPrice($artworkID){
+    global $cnn;
+    $query = "SELECT * FROM artworks WHERE artworkID = $artworkID";
+    $result = $cnn->query($query);
+    $row = $result->fetch_assoc();
+    return $row['price'];
+}
+function view($artworkID){
+    global $cnn;
+    $query = "UPDATE artworks SET view=view+1 WHERE artworkID = $artworkID";
+    $stmt = $cnn->prepare($query);
+    $stmt->execute();
+    return ($stmt->affected_rows > 0);
+}
 function getIntroduction($intr){
-    return substr($intr,0,80);
+    $lastxEm = strpos($intr,'</em>',0)+6;
+    $lastEm = strpos($intr,'<em>',0);
+    $length = 80;
+    if ($lastxEm > $length && $lastEm < $length){
+        $length = $lastxEm + 3;
+    }
+    return substr($intr,0,$length).'...';
 }
 ?>

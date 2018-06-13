@@ -5,11 +5,13 @@
 <?php include 'head.inc.php'; ?>
 <body>
 <?php include 'nav.inc.php'; ?>
+<?php require_once 'artworks_fns.php';?>
 <?php
 if (!isset($_GET['itemID'])){
     $_GET['itemID'] = 347;
 }
 $itemID = intval($_GET['itemID']);
+view($itemID);//when one item is shown, the view will add one
 $cnn = getConnect();
 $query = "SELECT * FROM artworks WHERE artworkID = $itemID";
 $result = $cnn->query($query);
