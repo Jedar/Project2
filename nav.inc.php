@@ -15,7 +15,7 @@ if ($pagetype != 0){
         <span id="top-tip"><span id="top-logo">Art Store </span></span>
     </div>
     <ul class="col-md-3 offset-md-3 nav nav-justified">
-        <li id="top-signin" class="nav-item"><a href="#" class="nav-link"><i class="fa fa-user-circle"></i>'.$userName.'</a></li>
+        <li id="top-signin" class="nav-item"><a href="userpage.php" class="nav-link"><i class="fa fa-user-circle"></i>'.$userName.'</a></li>
         <li id="top-shoppingcart" class="nav-item"><a href="shoppingcart.php" class="nav-link"><i class="fa fa-shopping-cart"></i> 购物车 <span id="top-shoppingcart-num"></span></a> </li>
         <li id="top-signout" class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#confirm"><i class="fa fa-sign-out"></i> 登出</a> </li>
     </ul>

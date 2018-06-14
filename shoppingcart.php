@@ -9,6 +9,15 @@
 $cartInfo = getCart($_SESSION['userID']);
 $cartNum = count($cartInfo);
 $totalPrice = 0;
+function getIntroduction($intr){//repeat function
+    $lastxEm = strpos($intr,'</em>',0)+6;
+    $lastEm = strpos($intr,'<em>',0);
+    $length = 80;
+    if ($lastxEm > $length && $lastEm < $length){
+        $length = $lastxEm + 3;
+    }
+    return substr($intr,0,$length).'...';
+}
 ?>
 <main>
     <h2 class="page-title">购物车</h2>
@@ -16,13 +25,14 @@ $totalPrice = 0;
         <?php
         for ($i = 0; $i < $cartNum; $i++){
             $totalPrice += $cartInfo[$i]['price'];
-            echo '<div class="item-like">
+            echo '<div class="item-like" data-id="'.$cartInfo[$i]['artworkID'].'">
         <figure>
         <img src="resources/img/'.$cartInfo[$i]['imageFileName'].'">
         </figure>
         <div class="item-name">
         <h3>'.$cartInfo[$i]['title'].'</h3>
         <p>'.$cartInfo[$i]['artist'].'</p>
+        <p>'.getIntroduction($cartInfo[$i]['description']).'</p>
         </div>
         <div>
         <button class="bt-price btn" data-id="'.$cartInfo[$i]['artworkID'].'"><i class="fa fa-star"></i> 价格:$<span class="item-price">'.$cartInfo[$i]['price'].'</span></button>

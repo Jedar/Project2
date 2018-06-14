@@ -46,6 +46,17 @@ try{
                 ]);
             }
             break;
+        case 'payAll':
+            $cartNum = intval($_POST['number']);
+            $cart = getCart($userID);
+            if (!$cartNum == count($cart)){
+                $errorType = 11;
+                throw new Exception('wrong cart item number');
+            }
+            $artworkArr = array();
+            foreach ($cart as $value){
+                array_push($artworkArr,$value['artworkID']);
+            }
         case 'pay':
             if (!$artworkArr){
                 $errorType = 1;

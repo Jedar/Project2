@@ -80,6 +80,17 @@ function getPrice($artworkID){
     $row = $result->fetch_assoc();
     return $row['price'];
 }
+function getUpload($userID){
+    global $cnn;
+    $arr = array();
+    $query = "SELECT * FROM artworks WHERE ownerID = $userID";
+    $result = $cnn->query($query);
+    while ($row=$result->fetch_assoc()){
+        if (is_null($row['orderID'])){
+            //write here
+        }
+    }
+}
 function view($artworkID){
     global $cnn;
     $query = "UPDATE artworks SET view=view+1 WHERE artworkID = $artworkID";

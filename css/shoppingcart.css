@@ -14,7 +14,7 @@ main{
     padding: 2em;
 }
 .item-like{
-    height: 12em;
+    height: 16em;
     background-color: #fff7dc;
     border: 0.01em solid #ffd26f;
     padding: 1.5em;
@@ -27,12 +27,13 @@ main{
     margin: 0;
 }
 .item-like img{
-    height: 8em;
-    width: 8em;
+    height: 12em;
+    width: 10em;
 }
 .item-name{
+    margin-bottom: 2em;
     overflow: hidden;
-    width: 30em;
+    width: 38em;
 }
 .item-name h3{
     font-size: large;

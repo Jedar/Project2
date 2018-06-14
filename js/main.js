@@ -91,8 +91,26 @@ $(document).ready(function () {
         })
     });
     $("#bt-pay").on('click',function () {
-        let artworkArr = {};
-        let btPrice = document.getElementsByClassName('bt-price');
-
+        let artworkNum = 0;
+        let btPrice = document.getElementsByClassName('item-like');
+        for (let i = 0; i < btPrice.length; i++){
+            if (btPrice[i].style.display !== 'none'){
+                artworkNum++;
+            }
+        }
+        $.post('cart_handle.php',{
+            'number':artworkNum,
+            'optype':'payAll'
+        },function (result) {
+            result = JSON.parse(result);
+            if (result.success){
+                showTip('支付成功');
+                $("#bt-pay").html('<i class="fa fa-back"></i>结款:$'+result.totalPrice);
+                $(".item-like").slideUp();
+            }
+            else {
+                alert(result.message);
+            }
+        })
     })
 });

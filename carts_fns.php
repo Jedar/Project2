@@ -35,7 +35,7 @@ function isExist_in_carts($userID,$artworkID){
 }
 function getCart($userID){
     global $cnn;
-    $query = "SELECT artworks.artworkID, artworks.artist, artworks.imageFileName, artworks.title, artworks.price, artworks.orderID FROM artworks, carts WHERE carts.userID = $userID AND carts.artworkID = artworks.artworkID";
+    $query = "SELECT artworks.artworkID, artworks.artist, artworks.imageFileName, artworks.title, artworks.price, artworks.orderID, artworks.description FROM artworks, carts WHERE carts.userID = $userID AND carts.artworkID = artworks.artworkID";
     $result = $cnn->query($query);
     $arr = array();
     while ($row = $result->fetch_assoc()){
