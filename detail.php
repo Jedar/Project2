@@ -48,8 +48,12 @@ if (!$row){
                 <p class="price-p">price: <span id="price"><?php echo $row['price'];?></span> </p>
                 <div>
                     <?php
-                    echo '<button id="bt-addToWish" class="btn btn-primary btn-sm'.((!is_null($row['orderID'])||!$_SESSION['isSigned'])?' disabled':'').'"><i class="fa fa-star"></i> Add to Wish List</button>';
-                    echo '<button id="bt-addToCart" class="btn btn-primary btn-sm'.((!is_null($row['orderID'])||!$_SESSION['isSigned'])?' disabled':'').'" data-target="'.$row['artworkID'].'"><i class="fa fa-shopping-cart"></i> Add to Shopping Cart</button>';
+                    if (!is_null($row['orderID'])){
+                        echo '<div class="alert alert-info">This artwork has been sold out.</div>';
+                    }else{
+                        echo '<button class="btn btn-primary btn-sm'.(!$_SESSION['isSigned']?' disabled':'').'"><i class="fa fa-star"></i> Add to Wish List</button>';
+                        echo '<button id="bt-addToCart" class="btn btn-primary btn-sm'.(!$_SESSION['isSigned']?' disabled':'').'" data-target="'.$row['artworkID'].'"><i class="fa fa-shopping-cart"></i> Add to Shopping Cart</button>';
+                    }
                     ?>
                 </div>
                 <?php

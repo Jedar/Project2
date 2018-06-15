@@ -58,10 +58,10 @@ function getOwner($artworkID){
     $row = $result->fetch_assoc();
     return $row['ownerID'];
 }
-function setOwner($userID,$artworkID,$orderID){
+function setOwner($artworkID,$orderID){
     global $cnn;
     $orderID = intval($orderID);
-    $query = "UPDATE artworks SET ownerID = $userID, orderID = $orderID WHERE artworkID = $artworkID";
+    $query = "UPDATE artworks SET orderID = $orderID WHERE artworkID = $artworkID";
     $stmt = $cnn->prepare($query);
     $stmt->execute();
     return ($stmt->affected_rows > 0);
@@ -86,9 +86,79 @@ function getUpload($userID){
     $query = "SELECT * FROM artworks WHERE ownerID = $userID";
     $result = $cnn->query($query);
     while ($row=$result->fetch_assoc()){
-        if (is_null($row['orderID'])){
-            //write here
+        array_push($arr,$row);
+    }
+    return $arr;
+}
+function getPurchase($userID){
+    global $cnn;
+    $arr  = array();
+    $query = "SELECT * FROM orders WHERE ownerID = $userID";
+    $result = $cnn->query($query);
+    while ($row = $result->fetch_assoc()){
+        $row['artworkID'] = array();
+        $row['title'] = array();
+        $orderID = $row['orderID'];
+        $queryx = "SELECT artworkID, title FROM artworks WHERE orderID = $orderID";
+        $resultx = $cnn->query($queryx);
+        while ($rowx = $resultx->fetch_assoc()){
+            array_push($row['artworkID'],$rowx['artworkID']);
+            array_push($row['title'],$rowx['title']);
         }
+        array_push($arr,$row);
+    }
+    return $arr;
+}
+function getSell($userID){
+    global $cnn;
+    $arr = array();
+    $query = "SELECT artworkID, title, price, orderID FROM artworks WHERE ownerID = $userID AND orderID IS NOT NULL";
+    $result = $cnn->query($query);
+    while ($row = $result->fetch_assoc()){
+        $orderID = $row['orderID'];
+        $queryx = "SELECT users.name, users.tel, users.email, users.address, orders.timeCreated FROM users, orders WHERE orders.orderID = $orderID AND orders.ownerID = users.userID";
+        $resultx = $cnn->query($queryx);
+        $rowx = $resultx->fetch_assoc();
+        array_push($arr,array_merge($row,$rowx));
+    }
+    return $arr;
+}
+function deleteArtwork($userID,$artworkID){
+    global $cnn;
+    $query = "DELETE FROM artworks WHERE artworkID = $artworkID AND ownerID = $userID AND orderID IS NULL";
+    $stmt = $cnn->prepare($query);
+    $stmt->execute();
+    if ($stmt->affected_rows > 0) {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+function insertArtwork($userID,$artist,$imageFileName,$title,$description,$yearOfWork,$genre,$width,$height,$price){
+    global $cnn;
+    $query = "INSERT INTO artworks VALUES(NULL,?,?,?,?,?,?,?,?,?,0,?,NULL,NULL)";
+    $stmt = $cnn->prepare($query);
+    $stmt->bind_param('ssssdsdddd',$artist,$imageFileName,$title,$description,$yearOfWork,$genre,$width,$height,$price,$userID);
+    $stmt->execute();
+    if ($stmt->affected_rows > 0) {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+function updateArtwork($userID,$artworkID,$artist,$imageFileName,$title,$description,$yearOfWork,$genre,$width,$height,$price){
+    global $cnn;
+    $query = "UPDATE artworks SET artist=?, imageFileName=?, title=?, description=?, yearOfWork=?, genre=?, width=?, height=?, price=?, WHERE artworkID = $artworkID AND ownerID = $userID";
+    $stmt = $cnn->prepare($query);
+    $stmt->bind_param('ssssdsdddd',$artist,$imageFileName,$title,$description,$yearOfWork,$genre,$width,$height,$price,$userID);
+    $stmt->execute();
+    if ($stmt->affected_rows > 0) {
+        return true;
+    }
+    else{
+        return false;
     }
 }
 function view($artworkID){

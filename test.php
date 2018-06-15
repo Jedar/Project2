@@ -1,7 +1,5 @@
 <?php require_once 'artworks_fns.php';?>
 <?php
-print json_encode([
-    'success'=>true,
-    'count'=>count($_POST)
-    ])
+$arr = getUpload(1);
+echo $arr[0]['timeReleased'];
 ?>

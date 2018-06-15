@@ -27,6 +27,18 @@ function delete($userID, $artworkID){
         return false;
     }
 }
+function delete_by_id($artworkID){
+    global $cnn;
+    $query = "DELETE FROM carts WHERE artworkID = $artworkID";
+    $stmt = $cnn->prepare($query);
+    $stmt->execute();
+    if ($stmt->affected_rows > 0) {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 function isExist_in_carts($userID,$artworkID){
     global $cnn;
     $query = "SELECT * FROM carts WHERE artworkID = $artworkID AND userID = $userID";

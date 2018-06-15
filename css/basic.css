@@ -157,3 +157,28 @@ footer div{
     border-radius: 0.3em 0.3em;
     z-index: 100;
 }
+/*upload part*/
+.upload-form{
+    padding: 1em 3em;
+}
+.upload-form .form-group{
+
+}
+.upload-form .form-group label{
+    text-align: left;
+    display: block;
+    width: 100%;
+}
+.upload-form .form-group input{
+    width: 100%;
+    display: block;
+}
+.upload-form .form-group div{
+    text-align: left;
+    margin-top: 1em;
+    color: #f50061;
+}
+#img-preview{
+    width: 20em;
+    height: 15em;
+}

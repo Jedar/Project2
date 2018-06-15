@@ -94,7 +94,7 @@ try{
             foreach ($artworkArr as $id){
                 $owner = getOwner($id);
                 setBalance($owner,getBalance($owner)+getPrice($id));
-                if (!setOwner($userID,$id,$orderID)){
+                if (!setOwner($id,$orderID)){
                     $errorType = 10;
                     throw new Exception('occur an insert error');
                 }else{

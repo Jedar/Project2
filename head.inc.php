@@ -34,8 +34,10 @@
             echo '<link rel="stylesheet" href="css/shoppingcart.css">';
             break;
         case 4://userpage
+            echo '<link rel="stylesheet" href="css/userpage.css">';
             break;
         case 5://release
+            echo '<script type="text/javascript" rel="script" src="js/upload.js"></script>';
             break;
     }
     ?>

@@ -31,6 +31,9 @@ $(document).ready(function () {
         location.assign('search.php?info='+info);
     });
     $("#bt-addToCart").on('click',function () {
+        if (this.hasClass('disabled')){
+            return;
+        }
         let artworkID = this.getAttribute('data-target');
         $.post('cart_handle.php',{
             'artworkID':artworkID,

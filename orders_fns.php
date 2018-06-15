@@ -15,5 +15,4 @@ function insert_orders($userID,$sum){
         return false;
     }
 }
-
 ?>
