@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php $pagetype = -1;?>
-<?php include 'head.inc.php'; ?>
+<?php include_once 'head.inc.php'; ?>
 <body>
-<?php include 'nav.inc.php'; ?>
+<?php include_once 'nav.inc.php'; ?>
 <main class="login-img row">
     <div class="col-md-4 offset-md-6 card ">
         <div class="card-header">登陆</div>

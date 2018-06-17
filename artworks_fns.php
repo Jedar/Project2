@@ -1,4 +1,4 @@
-<?php require_once 'db_connect.php';?>
+<?php include_once 'db_connect.php';?>
 <?php
 $cnn = getConnect();
 define('ITEMNUM',9);
@@ -11,7 +11,7 @@ function getSearchResult($pageIndex){
     $genre = (isset($_GET['genre']))?$_GET['genre']:"";
     $queryGenre = " AND genre = '$genre'";
     $queryInfo = " WHERE title LIKE '%$info%'";
-    $querySort = " ORDER BY $sort";
+    $querySort = " ORDER BY $sort DESC";
     $query = "SELECT * FROM artworks";
     $query.=$queryInfo;
     if ($genre){
@@ -44,6 +44,13 @@ function getSearchResult($pageIndex){
         array_push($pageInfo,$arr);
     }
     return ['pageNum'=>$pageNum,'numOfItems'=>$numOfItems,'pageInfo'=>$pageInfo];
+}
+function getArtwork($artworkID){
+    global $cnn;
+    $query = "SELECT * FROM artworks WHERE artworkID = $artworkID";
+    $result = $cnn->query($query);
+    $row = $result->fetch_assoc();
+    return $row;
 }
 function isExist_in_artworks($artworkID){
     global $cnn;
@@ -79,6 +86,13 @@ function getPrice($artworkID){
     $result = $cnn->query($query);
     $row = $result->fetch_assoc();
     return $row['price'];
+}
+function getPath($artworkID){
+    global $cnn;
+    $query = "SELECT * FROM artworks WHERE artworkID = $artworkID";
+    $result = $cnn->query($query);
+    $row = $result->fetch_assoc();
+    return $row['imageFileName'];
 }
 function getUpload($userID){
     global $cnn;
@@ -125,34 +139,37 @@ function getSell($userID){
 }
 function deleteArtwork($userID,$artworkID){
     global $cnn;
-    $query = "DELETE FROM artworks WHERE artworkID = $artworkID AND ownerID = $userID AND orderID IS NULL";
+    $query = "DELETE FROM artworks WHERE artworkID = $artworkID AND ownerID = $userID";
     $stmt = $cnn->prepare($query);
     $stmt->execute();
-    if ($stmt->affected_rows > 0) {
+    if ($stmt->errno == 0){
         return true;
+    }
+    else
+        return false;
+}
+function insertArtwork($userID,$artist,$title,$description,$yearOfWork,$genre,$width,$height,$price,$imgType){
+    global $cnn;
+    $query = "INSERT INTO artworks (artworkID,artist,title,description,yearOfWork,genre,width,height,price,view,ownerID,orderID,timeReleased)VALUES(NULL,?,?,?,?,?,?,?,?,0,?,NULL,NULL)";
+    $stmt = $cnn->prepare($query);
+    $stmt->bind_param('sssdsdddd',$artist,$title,$description,$yearOfWork,$genre,$width,$height,$price,$userID);
+    $stmt->execute();
+    $artworkID = $stmt->insert_id;
+    $imageFileName = ($artworkID).".".$imgType;
+    if ($stmt->affected_rows > 0) {
+        $queryx = "UPDATE artworks SET imageFileName = '$imageFileName' WHERE artworkID = $artworkID";
+        $stmtx = $cnn->query($queryx);
+        return $artworkID;
     }
     else{
         return false;
     }
 }
-function insertArtwork($userID,$artist,$imageFileName,$title,$description,$yearOfWork,$genre,$width,$height,$price){
+function updateArtwork($userID,$artworkID,$artist,$title,$imageFileName,$description,$yearOfWork,$genre,$width,$height,$price){
     global $cnn;
-    $query = "INSERT INTO artworks VALUES(NULL,?,?,?,?,?,?,?,?,?,0,?,NULL,NULL)";
+    $query = "UPDATE artworks SET artist=?, title=?, imageFileName=?, description=?, yearOfWork=?, genre=?, width=?, height=?, price=? WHERE artworkID = $artworkID AND ownerID = $userID";
     $stmt = $cnn->prepare($query);
-    $stmt->bind_param('ssssdsdddd',$artist,$imageFileName,$title,$description,$yearOfWork,$genre,$width,$height,$price,$userID);
-    $stmt->execute();
-    if ($stmt->affected_rows > 0) {
-        return true;
-    }
-    else{
-        return false;
-    }
-}
-function updateArtwork($userID,$artworkID,$artist,$imageFileName,$title,$description,$yearOfWork,$genre,$width,$height,$price){
-    global $cnn;
-    $query = "UPDATE artworks SET artist=?, imageFileName=?, title=?, description=?, yearOfWork=?, genre=?, width=?, height=?, price=?, WHERE artworkID = $artworkID AND ownerID = $userID";
-    $stmt = $cnn->prepare($query);
-    $stmt->bind_param('ssssdsdddd',$artist,$imageFileName,$title,$description,$yearOfWork,$genre,$width,$height,$price,$userID);
+    $stmt->bind_param('ssssdsddd',$artist,$title,$imageFileName,$description,$yearOfWork,$genre,$width,$height,$price);
     $stmt->execute();
     if ($stmt->affected_rows > 0) {
         return true;

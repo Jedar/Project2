@@ -28,6 +28,9 @@ main{
 #header-nav a:hover{
     color: #6d6d6d;
 }
+#track-div{
+    width: 800px;
+}
 #track-div .arrow{
     padding: 0.5em 0;
 }
@@ -145,7 +148,7 @@ footer div{
     margin-bottom: 4em;
 }
 /*tip part*/
-#tip{
+#tip, #error{
     position: fixed;
     top: 20%;
     left: 47%;
@@ -155,7 +158,7 @@ footer div{
     background-color: #000000;
     color: #ffffff;
     border-radius: 0.3em 0.3em;
-    z-index: 100;
+    z-index: 1060;
 }
 /*upload part*/
 .upload-form{
@@ -181,4 +184,15 @@ footer div{
 #img-preview{
     width: 20em;
     height: 15em;
+}
+/*message part*/
+#main-message .nav{
+    min-height: 30em;
+}
+#main-message .tab-content{
+    padding: 2em 3em;
+    min-height: 30em;
+}
+#main-message .div-message{
+    min-height: 25em;
 }

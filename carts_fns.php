@@ -1,8 +1,8 @@
-<?php require_once 'db_connect.php';?>
+<?php include_once 'db_connect.php';?>
 <?php
 $cnn = getConnect();
 
-function insert($userID,$artworkID){
+function insert_carts($userID, $artworkID){
     global $cnn;
     $query = "INSERT INTO carts VALUES(NULL,?,?)";
     $stmt = $cnn->prepare($query);
@@ -38,6 +38,16 @@ function delete_by_id($artworkID){
     else{
         return false;
     }
+}
+function get_liker($artworkID){
+    global $cnn;
+    $query = "SELECT * FROM carts WHERE artworkID = $artworkID";
+    $result = $cnn->query($query);
+    $arr = array();
+    while ($row = $result->fetch_assoc()){
+        array_push($arr,$row);
+    }
+    return $arr;
 }
 function isExist_in_carts($userID,$artworkID){
     global $cnn;

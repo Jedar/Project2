@@ -1,5 +1,11 @@
 <?php require_once 'artworks_fns.php';?>
 <?php
-$arr = getUpload(1);
-echo $arr[0]['timeReleased'];
+session_start();
+session_destroy();
+//error_log('hello');
+//$cnn = getConnect();
+//$query = "INSERT INTO artworks (artworkID,price)VALUES(NULL,artworkID)";
+//$stmt = $cnn->prepare($query);
+//$stmt->execute();
+//echo $stmt->affected_rows;
 ?>

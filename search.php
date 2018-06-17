@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php $pagetype = 2;?>
-<?php include 'head.inc.php'; ?>
+<?php include_once 'head.inc.php'; ?>
 <body>
-<?php include 'nav.inc.php'; ?>
-<?php include 'artworks_fns.php';?>
+<?php include_once 'nav.inc.php'; ?>
+<?php include_once 'artworks_fns.php';?>
 <?php
 $result = getSearchResult(0);
 $pageNum = $result['pageNum'];

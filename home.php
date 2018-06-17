@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php $pagetype = 0;?>
-<?php include 'head.inc.php'; ?>
+<?php include_once 'head.inc.php'; ?>
 <body>
-<?php include 'nav.inc.php'; ?>
+<?php include_once 'nav.inc.php'; ?>
 <?php
-include 'db_connect.php';
+include_once 'db_connect.php';
 $cnn = getConnect();
 $query = "SELECT * FROM artworks ORDER BY view DESC LIMIT 0,3";
 $resultView = $cnn->query($query);

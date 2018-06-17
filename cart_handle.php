@@ -1,7 +1,8 @@
-<?php require 'carts_fns.php';?>
-<?php require 'artworks_fns.php';?>
+<?php require_once 'carts_fns.php';?>
+<?php require_once 'artworks_fns.php';?>
 <?php require_once 'users_fns.php';?>
 <?php require_once 'orders_fns.php';?>
+<?php include_once 'messages_fns.php';?>
 <?php
 session_start();
 $artworkID = isset($_POST['artworkID'])?intval($_POST['artworkID']):"";
@@ -26,7 +27,7 @@ try{
                 $errorType = 3;
                 throw new Exception('artwork has been in your cart');
             }
-            if (insert($userID,$artworkID)){
+            if (insert_carts($userID,$artworkID)){
                 print json_encode([
                     'success'=>true,
                     'message'=>'success'
@@ -99,6 +100,13 @@ try{
                     throw new Exception('occur an insert error');
                 }else{
                     delete($userID,$id);
+                    $list = get_liker($id);
+                    $artwork = getArtwork($id);
+                    foreach ($list as $value){
+                        $message = '尊敬的用户，</br>很抱歉您购物车中的艺术品'.$artwork['title'].'已经被其他收藏家购买。</br>希望您下次能及时购买。';
+                        sendMessage(1,$value['userID'],$message);
+                        delete($value['userID'],$id);
+                    }
                 }
             }
             print json_encode([

@@ -39,6 +39,8 @@
         case 5://release
             echo '<script type="text/javascript" rel="script" src="js/upload.js"></script>';
             break;
+        case 6://mail
+            break;
     }
     ?>
 </head>

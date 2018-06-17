@@ -10,6 +10,7 @@
 if (!isset($_GET['itemID'])){
     $_GET['itemID'] = 347;
 }
+$userID = (isset($_SESSION['userID']))?$_SESSION['userID']:"";
 $itemID = intval($_GET['itemID']);
 view($itemID);//when one item is shown, the view will add one
 $cnn = getConnect();
@@ -23,7 +24,7 @@ if (!$row){
     $row = $result->fetch_assoc();
 }
 ?>
-<main class="row justify-content-center">
+<main class="row justify-content-center detail-main">
     <section class="detail-div col-md-8">
         <div class="container">
             <h2 class="goods-name"><?php echo $row['title'];?></h2>
@@ -50,7 +51,13 @@ if (!$row){
                     <?php
                     if (!is_null($row['orderID'])){
                         echo '<div class="alert alert-info">This artwork has been sold out.</div>';
-                    }else{
+                    }elseif ($userID == $row['ownerID']){
+                        echo '<div class="alert alert-info">You upload this artwork.</div>';
+                    }
+                    else{
+                        if(!$_SESSION['isSigned']){
+                            echo '<div class="alert alert-info">Please log in before add artwork to shopping cart.</div>';
+                        }
                         echo '<button class="btn btn-primary btn-sm'.(!$_SESSION['isSigned']?' disabled':'').'"><i class="fa fa-star"></i> Add to Wish List</button>';
                         echo '<button id="bt-addToCart" class="btn btn-primary btn-sm'.(!$_SESSION['isSigned']?' disabled':'').'" data-target="'.$row['artworkID'].'"><i class="fa fa-shopping-cart"></i> Add to Shopping Cart</button>';
                     }

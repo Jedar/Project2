@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php $pagetype = 4;?>
-<?php include 'head.inc.php'; ?>
+<?php include_once 'head.inc.php'; ?>
 <body>
-<?php include 'nav.inc.php'; ?>
-<?php include 'carts_fns.php';?>
+<?php include_once 'nav.inc.php'; ?>
+<?php include_once 'carts_fns.php';?>
 <?php include_once 'artworks_fns.php';?>
 <?php include_once 'orders_fns.php';?>
 <?php
@@ -22,7 +22,7 @@ $userID = $_SESSION['userID'];
                 <tr><td>余额:</td><td><span id="user-data-money">'.$_SESSION['balance'].'</span>  </td></tr>
             </table>';
             ?>
-            <div class="text-right"><button type="button" id="bt-recharge" class="btn">充值</button> </div>
+            <div class="text-right"><button type="button" id="bt-recharge" class="btn" data-target="#modal-recharge" data-toggle="modal">充值</button> </div>
         </aside>
         <div class="col-md-8 offset-md-1">
             <ul class="nav nav-tabs" role="tablist">
@@ -45,7 +45,11 @@ $userID = $_SESSION['userID'];
                         <?php
                         $myUpload = getUpload($userID);
                         for ($i = 0; $i < count($myUpload);$i++){
-                            echo '<tr><td><a href="detail.php?itemID='.$myUpload[$i]['artworkID'].'">'.$myUpload[$i]['title'].'</a></td><td>'.$myUpload[$i]['artist'].'</td><td>'.$myUpload[$i]['timeReleased'].'</td><td><button class="btn-primary btn">修改</button> </td><td><button type="button" class="btn btn-danger">删除</button> </td></tr>';
+                            if (is_null($myUpload[$i]['orderID'])){
+                                echo '<tr data-target="'.$myUpload[$i]['artworkID'].'"><td><a href="detail.php?itemID='.$myUpload[$i]['artworkID'].'">'.$myUpload[$i]['title'].'</a></td><td>'.$myUpload[$i]['artist'].'</td><td>'.$myUpload[$i]['timeReleased'].'</td><td><button class="btn-primary btn bt-amend">修改</button> </td><td><button type="button" class="btn btn-danger bt-delete-item">删除</button> </td></tr>';
+                            }else{
+                                echo '<tr data-target="'.$myUpload[$i]['artworkID'].'"><td><a href="detail.php?itemID='.$myUpload[$i]['artworkID'].'">'.$myUpload[$i]['title'].'</a></td><td>'.$myUpload[$i]['artist'].'</td><td>'.$myUpload[$i]['timeReleased'].'</td><td colspan="2"><h4><span class="badge badge-info">This artwork has been sold out.</span></h4></td></tr>';
+                            }
                         }
                         ?>
                         </tbody>
