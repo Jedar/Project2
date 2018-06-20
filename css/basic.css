@@ -181,9 +181,13 @@ footer div{
     margin-top: 1em;
     color: #f50061;
 }
-#img-preview{
+.img-container{
     width: 20em;
     height: 15em;
+}
+#img-preview{
+    width: 18em;
+    height: 13em;
 }
 /*message part*/
 #main-message .nav{
@@ -195,4 +199,7 @@ footer div{
 }
 #main-message .div-message{
     min-height: 25em;
+}
+#main-message .message-content{
+    min-height: 23em;
 }

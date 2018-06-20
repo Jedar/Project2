@@ -4,6 +4,7 @@ $(document).ready(function () {
 
     //initial part
     setCheckNum();
+    checkIsSign();
 
     function getInfo(message) {
         return "<i class=\"fa fa-exclamation-circle fa-lg\"></i> "+message;
@@ -54,7 +55,9 @@ $(document).ready(function () {
                 'psw':userPsw.val(),
             },function(result) {
                 if (result['success']){
-                    window.location = "home.php";//some problem here
+                    $("#top-signin").attr('data-sign','1');
+                    checkIsSign();
+                    window.location = result.page;
                 }
                 else {
                     switch (result['type']){
@@ -78,4 +81,12 @@ $(document).ready(function () {
             });
         }
     });
+    function checkIsSign() {
+        let isSign = $("#top-signin").attr('data-sign');
+        if (isSign === '1'){
+            $('.card').html('<div class="alert alert-success">\n' +
+                '  登陆成功\n' +
+                '</div>')
+        }
+    }
 });

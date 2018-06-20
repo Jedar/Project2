@@ -127,7 +127,7 @@ if (isset($_GET['upload_item'])){
                         <label for="imageFile">Image File:</label>
                         <?php
                         if ($isUpdate){
-                            echo '<input type="file" class="form-control" name="imageFile" id="imageFile" value="resources/img/'.$row['imageFileName'].'">';
+                            echo '<input type="file" class="form-control" name="imageFile" id="imageFile">';
                         }else{
                             echo '<input type="file" class="form-control" name="imageFile" id="imageFile">';
                         }
@@ -136,18 +136,23 @@ if (isset($_GET['upload_item'])){
                     </div>
                     <div class="card bg-light offset-md-1">
                         <div class="card-header">Preview Image</div>
+                        <div class="card-body img-container">
                         <?php
                         if ($isUpdate){
                             echo '<img id="img-preview" class="card-img" alt="preview image" src="resources/img/'.$row['imageFileName'].'">';
                         }else{
-                            echo '<img id="img-preview" class="card-img" alt="preview image" src="">';
+                            echo '<img id="img-preview" class="card-img hidden" alt="preview image" src="">';
                         }
                         ?>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="card-footer text-right">
-                <button class="btn btn-primary" id="bt-upload" type="button">Commit</button>
+                <?php
+                $data_type = ($isUpdate)?'update':'upload';
+                echo '<button class="btn btn-primary" id="bt-upload" type="button" data-type="'.$data_type.'">Commit</button>';
+                ?>
             </div>
         </fieldset>
     </form>

@@ -17,9 +17,10 @@
                 <h4></h4>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="bt-confirm-delete">删除</button>
                 <button type="button" class="btn btn-primary" id="bt-logout">退出登陆</button>
                 <button type="button" class="btn btn-primary" id="bt-confirm" data-dismiss="modal">确认</button>
-                <button type="button" class="btn btn-light" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal" id="bt-confirm-cancel">取消</button>
             </div>
         </div>
     </div>

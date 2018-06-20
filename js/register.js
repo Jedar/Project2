@@ -18,6 +18,7 @@ $(document).ready(function () {
 
     //initial part
     setCheckNum();
+    checkIsSign();
 
     function getInfo(message) {
         return "<i class=\"fa fa-exclamation-circle fa-lg\"></i> "+message;
@@ -57,7 +58,9 @@ $(document).ready(function () {
                     }
                 }
                 else {
-                    window.location = 'home.php';
+                    $('#top-signin').attr('data-sign','1');
+                    checkIsSign();
+                    window.location = result.page;
                 }
             });
         }
@@ -176,5 +179,13 @@ $(document).ready(function () {
             userCheck.siblings("div").addClass("hidden");
             registerArr[6]=true;
         }
-    };
+    }
+    function checkIsSign() {
+        let isSign = $("#top-signin").attr('data-sign');
+        if (isSign === '1'){
+            $('.card').html('<div class="alert alert-success">\n' +
+                '  注册成功，用户已登陆\n' +
+                '</div>')
+        }
+    }
 });

@@ -1,9 +1,15 @@
 $(document).ready(function () {
     let bt_logout = $('#bt-logout');
     let bt_confirm = $("#bt-confirm");
-    let modal_footer = $(".modal-footer");
     let bt_recharge_commit = $("#bt-recharge-commit");
+    let bt_confirm_delete = $("#bt-confirm-delete");
     let div_recharge = $("#recharge-input");
+    let bt_confirm_cancel = $("#bt-confirm-cancel");
+    bt_confirm_cancel.detach();
+    bt_logout.detach();
+    bt_confirm.detach();
+    bt_confirm_delete.detach();
+    let thatItem;
 
     function showTip(message) {
         $(".tip-content").html(message);
@@ -22,18 +28,26 @@ $(document).ready(function () {
         });
     }
     function confirm(message,type=0,header='Confirm') {
-        let comfirm_modal = $("#confirm");
-        bt_logout.detach();
-        bt_confirm.detach();
-        comfirm_modal.find(".modal-body h4").html(message);
-        comfirm_modal.find(".modal-title").html(header);
+        let confirm_modal = $("#confirm");
+        let modal_footer = confirm_modal.find(".modal-footer");
+        modal_footer.html("");
+        confirm_modal.find(".modal-body h4").html(message);
+        confirm_modal.find(".modal-title").html(header);
+        modal_footer.prepend(bt_confirm_cancel);
         if (type === 0){
             modal_footer.prepend(bt_logout);
         }
         if (type === 1){
             modal_footer.prepend(bt_confirm);
         }
-        comfirm_modal.modal();
+        if (type === 2){
+            modal_footer.prepend(bt_confirm_delete);
+        }
+        confirm_modal.modal();
+    }
+    function showConflict(message) {
+        input.next().removeClass("hidden");
+        input.next().html("<i class=\"fa fa-exclamation-circle fa-lg\"></i>"+message);
     }
 
     //add event listener
@@ -51,17 +65,24 @@ $(document).ready(function () {
             else {
                 showTip('退出成功');
                 if (result['turnpage']){
-                    window.location = 'home.php';
+                    window.location = result['turnpage'];
                 }
                 else {
-                    window.location = window.location.pathname;
+                    window.location = 'home.php';
                 }
             }
         })
     });
     $("#bt-search").on('click',function () {
+        let str = '';
+        let checkDom = document.getElementsByName('type');
+        for (let i = 0; i < checkDom.length; i++){
+            if (checkDom[i].checked){
+                str += "&"+checkDom[i].value+"="+checkDom[i].value;
+            }
+        }
         let info = $("#search-input").val();
-        location.assign('search.php?info='+info);
+        location.assign('search.php?info='+info+str);
     });
     $("#bt-addToCart").on('click',function () {
         if ($(this).is('.disabled')){
@@ -170,21 +191,26 @@ $(document).ready(function () {
         let item = $(this).parents("tr").attr('data-target');
         location.assign('upload.php?upload_item='+item);
     });
-    $(".bt-delete-item").on('click',function () {
-        let item = $(this).parents("tr").attr('data-target');
-        let that = $(this);
+    bt_confirm_delete.on('click',function () {
+        let item = thatItem.parents("tr").attr('data-target');
+        let that = thatItem;
         $.post('upload_handle.php',{
             'artworkID':item,
             'type':'delete'
         },function (result) {
             result = JSON.parse(result);
             if (result.success){
+                $("#confirm").modal('hide');
                 that.parents("tr").slideUp();
-                showTip('Delete successfully');
+                showTip('删除成功');
             }else {
-                confirm(result.message,1);
+                showError(result.message);
             }
         });
+    });
+    $(".bt-delete-item").on('click',function () {
+        thatItem = $(this);
+        confirm('确认删除已上传的艺术品吗？',2);
     });
     bt_recharge_commit.on('click',function () {
         let input = $("#recharge-input");
@@ -218,9 +244,73 @@ $(document).ready(function () {
                 })
             }
         }
-        function showConflict(message) {
-            input.next().removeClass("hidden");
-            input.next().html("<i class=\"fa fa-exclamation-circle fa-lg\"></i>"+message);
+    });
+    $('.bt-delete-message').on('click',function () {
+        let messageID = $(this).attr('data-id');
+        let that = $(this);
+        messageID = parseInt(messageID);
+        $.post('message_handle.php',{
+            'messageID':messageID,
+            'type':'delete'
+        },function (result) {
+            result = JSON.parse(result);
+            if (result.success){
+                $("#send").addClass('active');
+                $('[href="#send"]').addClass('active');
+                let query = '[href="#'+messageID+'"]';
+                $(query).parents('.nav-item').detach();
+                that.parents('.tab-pane').detach();
+                showTip('删除成功');
+            }else {
+                showError(result.message);
+            }
+        })
+    });
+    $('#bt-send-message').on('click',function () {
+        let sendDom = $('#send');
+        let receiver = $('#receiver').val();
+        let content = $('#content').val();
+        if (!receiver){
+            showError('接收者为空');
+            return;
+        }
+        if (!content){
+            showError('信息内容为空');
+            return;
+        }
+        $.post('message_handle.php',{
+            'receiver':receiver,
+            'content':content,
+            'type':'send'
+        },function (result) {
+            result = JSON.parse(result);
+            if (result.success){
+                $('#receiver').val("");
+                $('#content').val("");
+                showTip('发送成功');
+            }else {
+                showError(result.message);
+            }
+        })
+    });
+    $('.message-mark').on('click',function () {
+        let isRead = $(this).attr('data-read');
+        let messageID = $(this).attr('data-id');
+        messageID = parseInt(messageID);
+        let that = $(this);
+        if (isRead === '0'){
+            $.post('message_handle.php',{
+                'type':'read',
+                'messageID':messageID
+            },function (result) {
+                result = JSON.parse(result);
+                if (result.success){
+                    that.attr('data-read','1');
+                    that.siblings("i").removeClass('fa-envelope-o').addClass('fa-envelope-open-o');
+                }else{
+                    showError(result.message);
+                }
+            })
         }
     })
 });

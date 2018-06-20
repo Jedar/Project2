@@ -10,19 +10,25 @@ $result = getSearchResult(0);
 $pageNum = $result['pageNum'];
 $numOfItems = $result['numOfItems'];
 $result=$result['pageInfo'];
+$sort = (isset($_GET['sort']))?$_GET['sort']:"";
 ?>
 <main>
     <h2 class="page-title">搜索结果:</h2>
     <div class="sortbar">
         <form method="get" action="" name="sort">
-            <p>排序方式 &nbsp;
-                价格:<input type="radio" name="sort" value="price" class="sort">
+            <?php
+            echo '<p>排序方式:
+                  价格:<input type="radio" name="sort" value="price" class="sort">
                 热度:<input type="radio" name="sort" value="view" class="sort">
-                标题:<input type="radio" name="sort" value="title" class="sort"></p>
+                标题:<input type="radio" name="sort" value="title" class="sort"></p>'
+            ?>
         </form>
     </div>
     <div class="item-box" id="item-box">
         <?php
+        if ($numOfItems == 0){
+            echo '<h3 class="alert alert-info">抱歉，没有搜索到任何有关的艺术品</h3>';
+        }
         for ($i = 0; $i < $numOfItems; $i++){
             $row=$result[$i];
             echo '<div class="item">
@@ -58,7 +64,7 @@ $result=$result['pageInfo'];
                 echo '<li class="page-item"><a class="page-link" data-target="5">...</a></li>';
                 echo '<li class="page-item"><a class="page-link" data-target="'.($pageNum - 1).'">'.$pageNum.'</a></li>';
             }
-            echo '<li class="page-item'.(($pageNum == 1)?' disabled':'').'"><a class="page-link" data-target="up">Next</a></li>'
+            echo '<li class="page-item'.(($pageNum == 1||$pageNum == 0)?' disabled':'').'"><a class="page-link" data-target="up">Next</a></li>'
             ?>
         </ul>
     </div>

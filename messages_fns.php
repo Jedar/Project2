@@ -2,7 +2,6 @@
 <?php
 $cnn = getConnect();
 
-readMessage(1);
 function getMessageList($userID){
     global $cnn;
     $arr = array();
@@ -31,11 +30,28 @@ function readMessage($messageID){
     $query = "UPDATE messages SET isRead = 1 WHERE messageID = $messageID";
     $stmt = $cnn->prepare($query);
     $stmt->execute();
-    if ($stmt->affected_rows > 0) {
+    if ($stmt->errno == 0) {
         return true;
     }
     else{
         return false;
     }
+}
+function getNewMessageNum($userID){
+    global $cnn;
+    $query = "SELECT * FROM messages WHERE receiverID = $userID AND isRead = 0";
+    $result = $cnn->query($query);
+    return $result->num_rows;
+}
+function deleteMessage($messageID){
+    global $cnn;
+    $query = "DELETE FROM messages WHERE messageID = $messageID";
+    $stmt = $cnn->prepare($query);
+    $stmt->execute();
+    if ($stmt->errno == 0){
+        return true;
+    }
+    else
+        return false;
 }
 ?>

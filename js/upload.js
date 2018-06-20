@@ -1,6 +1,11 @@
 $(document).ready(function () {
     let imageFlag = false;
     let formFlag = false;
+    let bt_upload = $("#bt-upload");
+    let type = bt_upload.attr('data-type');
+    let isUpdate = (type === 'update');
+    let isFile = 0;
+
     $("form textarea").on('change',function () {
         if (!$(this).val()){
             formFlag = false;
@@ -18,7 +23,7 @@ $(document).ready(function () {
             }
             else {
                 hideError($(this));
-                if ($(this).is("#year")){
+                if ($(this).is("#year")){1
                     if (!(/^-?\d+$/.test($(this).val()))){
                         formFlag = false;
                         showError($(this),'Wrong Year Input!');
@@ -44,26 +49,35 @@ $(document).ready(function () {
                 }
             }
         }else {
+            isFile = 0;
             let file = this.files[0];
             let img = $("#img-preview");
             imageFlag = true;
             if (!file){
-                img.removeAttr('src');
+                img.addClass('hidden');
+                if (isUpdate){
+                    hideError($(this));
+                    imageFlag = true;
+                    return;
+                }
                 showError($(this),'Please choose an image file.');
                 imageFlag = false;
                 return;
             }
             if (!(/^image\/png$|jpeg$/.test(file.type))){
+                img.addClass('hidden');
                 showError($(this),'Please choose an image file with jpg or jpeg or png.');
                 imageFlag = false;
                 return;
             }
+            img.removeClass('hidden');
             hideError($(this));
             let oburl = window.URL.createObjectURL(file);
             img.attr("src", oburl) ;
+            isFile = 1;
         }
     });
-    $("#bt-upload").on('click',function () {
+    bt_upload.on('click',function () {
         formFlag = true;
         $('form input').each(function () {
             if (!($(this).is("#imageFile"))){
@@ -100,8 +114,14 @@ $(document).ready(function () {
                 }
             }else {
                 if (!imageFlag){
-                    showError($(this),'Please choose an image file.');
-                    imageFlag = false;
+                    let file = this.files[0];
+                    if (!file&&isUpdate){
+                        imageFlag = true;
+                        isFile = 0;
+                    }else {
+                        showError($(this),'Please choose an image file.');
+                        imageFlag = false;
+                    }
                 }
             }
         });
@@ -134,7 +154,10 @@ $(document).ready(function () {
             formData.append('height',height);
             formData.append('description',description);
             formData.append('price',price);
-            formData.append('file',file);
+            formData.append('isFile',isFile+"");
+            if (isFile === 1){
+                formData.append('file',file);
+            }
             $.ajax({
                 url: 'upload_handle.php',
                 type: 'POST',

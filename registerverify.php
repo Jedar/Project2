@@ -43,9 +43,11 @@ try{
             $stmt = $cnn->prepare($query);
             $stmt->bind_param('sssssd',$userName,$userEmail,$userPsw,$userTel,$userAddress,$userBalance);
             $stmt->execute();
+            $userID = $stmt->insert_id;
+            $track = (count($_SESSION['track'])-1>=0)?$_SESSION['track'][count($_SESSION['track'])-1]:'home.php';
             if ($stmt->affected_rows > 0){
                 $_SESSION['isSigned'] = true;
-                //userID not included
+                $_SESSION['userID'] = $userID;
                 $_SESSION['name'] = $userName;
                 $_SESSION['balance'] = 0;
                 $_SESSION['tel'] = $userTel;
@@ -53,7 +55,8 @@ try{
                 $_SESSION['address'] = $userAddress;
                 print json_encode([
                     'success'=>true,
-                    'message'=>'register successfully'
+                    'message'=>'register successfully',
+                    'page'=>$track
                 ]);
             }
             else{

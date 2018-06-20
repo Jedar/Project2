@@ -14,6 +14,7 @@ try{
             if (isset($_SESSION['upload_item'])){
                 $artworkID = intval($_SESSION['upload_item']);
             }
+            $isFile = ($_POST['isFile'] === '1');
             $artist = $_POST['artist'];
             $title = $_POST['title'];
             $description = $_POST['description'];
@@ -23,37 +24,51 @@ try{
             $height = $_POST['height'];
             $price = $_POST['price'];
             $imgType = "";
-            if ($_FILES["file"]["type"] == "image/gif"){
-                $imgType = "gif";
+            if ($isFile){
+                if ($_FILES["file"]["type"] == "image/gif"){
+                    $imgType = "gif";
+                }
+                if ($_FILES["file"]["type"] == "image/jpeg"){
+                    $imgType = "jpg";
+                }
+                if ($_FILES["file"]["type"] == "image/pjpeg"){
+                    $imgType = "jpg";
+                }
+                if ($_FILES["file"]["type"] == "image/png"){
+                    $imgType = "png";
+                }
+                if (!$imgType){
+                    $errorType = 10;
+                    throw new Exception('wrong file type');
+                }
+                $tempFile = $_FILES['file']['tmp_name'];
             }
-            if ($_FILES["file"]["type"] == "image/jpeg"){
-                $imgType = "jpg";
-            }
-            if ($_FILES["file"]["type"] == "image/pjpeg"){
-                $imgType = "jpg";
-            }
-            if ($_FILES["file"]["type"] == "image/png"){
-                $imgType = "png";
-            }
-            if (!$imgType){
-                $errorType = 10;
-                throw new Exception('wrong file type');
-            }
-            $tempFile = $_FILES['file']['tmp_name'];
             if ($artworkID){
-                $path = $artworkID.".".$imgType;
                 $pathOld = getPath($artworkID);
+                if ($isFile){
+                    $path = $artworkID.".".$imgType;
+                }else{
+                    $path = $pathOld;
+                }
+                $oldArtwork = getArtwork($artworkID);
                 if (updateArtwork($userID,$artworkID,$artist,$title,$path,$description,$yearOfWork,$genre,$width,$height,$price)){
+                    $list = get_liker($artworkID);
+                    foreach ($list as $value){
+                        $message = '尊敬的用户，</br>您购物车中的艺术品'.$oldArtwork['title'].'(艺术品现名：'.$title.')的部分信息已经被发布者更改。</br>请注意这些更改，以免造成不必要的损失。';
+                        sendMessage(1,$value['userID'],$message);
+                    }
                     print json_encode([
                         'success'=>true,
                         'type'=>'update',
                         'message'=>'finish update',
                         'artworkID'=>$artworkID
                     ]);
-                    if (file_exists("resources/img/".$pathOld)){
-                        unlink("resources/img/".$pathOld);
+                    if ($isFile){
+                        if (file_exists("resources/img/".$pathOld)){
+                            unlink("resources/img/".$pathOld);
+                        }
+                        move_uploaded_file($tempFile,"resources/img/".$path);
                     }
-                    move_uploaded_file($tempFile,"resources/img/".$path);
                 }
                 else{
                     $errorType = 11;
@@ -82,9 +97,12 @@ try{
         case 'delete':
             if (isset($_POST['artworkID'])){
                 $artworkID = $_POST['artworkID'];
+                $artwork = getArtwork($artworkID);
                 if (deleteArtwork($userID,$artworkID)){
+                    if (file_exists("resources/img/".$artwork['imageFileName'])){
+                        unlink("resources/img/".$artwork['imageFileName']);
+                    }
                     $list = get_liker($artworkID);
-                    $artwork = getArtwork($artworkID);
                     foreach ($list as $value){
                         $message = '尊敬的用户，</br>很抱歉您购物车中的艺术品'.$artwork['title'].'已经被发布者删除。</br>希望您下次能及时购买。';
                         sendMessage(1,$value['userID'],$message);

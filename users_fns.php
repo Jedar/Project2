@@ -30,4 +30,15 @@ function getBalance($userID){
         return false;
     }
 }
+function getUserID($name){
+    global $cnn;
+    $query = "SELECT * FROM users WHERE name = '$name'";
+    $result = $cnn->query($query);
+    if ($row = $result->fetch_assoc()){
+        return $row['userID'];
+    }
+    else{
+        return false;
+    }
+}
 ?>

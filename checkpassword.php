@@ -11,6 +11,7 @@ try{
     $query = "SELECT * FROM users WHERE name = '$userName'";
     $result = $cnn->query($query);
     $row = $result->fetch_assoc();
+    $track = (count($_SESSION['track'])-1>=0)?$_SESSION['track'][count($_SESSION['track'])-1]:'home.php';
     if ($row){
         if ($userPsw === $row['password']){
             $_SESSION['isSigned'] = true;
@@ -21,7 +22,8 @@ try{
             $_SESSION['email'] = $row['email'];
             $_SESSION['address'] = $row['address'];
             print json_encode([
-                'success' => true
+                'success' => true,
+                'page'=>$track
             ]);
         }
         else{

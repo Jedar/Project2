@@ -10,7 +10,23 @@ function getSearchResult($pageIndex){
     $sort = (isset($_GET['sort']))?$_GET['sort']:"";
     $genre = (isset($_GET['genre']))?$_GET['genre']:"";
     $queryGenre = " AND genre = '$genre'";
-    $queryInfo = " WHERE title LIKE '%$info%'";
+    $queryInfo = "";
+    if (isset($_GET['typetitle'])){
+        $queryInfo.="OR title LIKE '%$info%'";
+    }
+    if (isset($_GET['typeartist'])){
+        $queryInfo.="OR artist LIKE '%$info%'";
+    }
+    if (isset($_GET['typedescription'])){
+        $queryInfo.="OR description LIKE '%$info%'";
+    }
+    if ($queryInfo != ""){
+        $queryInfo = substr($queryInfo,3);
+        $queryInfo = "(".$queryInfo.")";
+        $queryInfo = " WHERE ".$queryInfo." AND orderID IS NULL";
+    }else{
+        $queryInfo.=" WHERE orderID IS NULL";
+    }
     $querySort = " ORDER BY $sort DESC";
     $query = "SELECT * FROM artworks";
     $query.=$queryInfo;
@@ -171,12 +187,11 @@ function updateArtwork($userID,$artworkID,$artist,$title,$imageFileName,$descrip
     $stmt = $cnn->prepare($query);
     $stmt->bind_param('ssssdsddd',$artist,$title,$imageFileName,$description,$yearOfWork,$genre,$width,$height,$price);
     $stmt->execute();
-    if ($stmt->affected_rows > 0) {
+    if ($stmt->errno == 0){
         return true;
     }
-    else{
+    else
         return false;
-    }
 }
 function view($artworkID){
     global $cnn;
