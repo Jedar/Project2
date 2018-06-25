@@ -49,8 +49,8 @@ main{
     font-weight: normal;
     font-style: italic;
     font-family: "Courier New",Serif;
-    margin: 1em;
-    height: 3em;
+    margin: 0.8em;
+    height: 5em;
 }
 .item-name p{
     font-size: large;

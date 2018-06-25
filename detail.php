@@ -28,7 +28,7 @@ if (!$row){
     <section class="detail-div col-md-8">
         <div class="container">
             <h2 class="goods-name"><?php echo $row['title'];?></h2>
-            <a class="goods-author" href="search.php">By <?php echo $row['artist'];?></a>
+            <a class="goods-author" href="search.php?typeartist=1&info=">By <?php echo $row['artist'];?></a>
         </div>
         <div class="row">
             <figure class="detail-fig col-md-5">
@@ -78,21 +78,21 @@ if (!$row){
     <aside class="asideBar col-md-2">
         <div class="list-group" id="artist-list">
             <span class="list-group-item list-group-item-info">流行艺术家</span>
-            <a href="search.html" class="list-group-item list-group-item-action">cnasido</a>
-            <a href="search.html" class="list-group-item list-group-item-action">adfgg</a>
-            <a href="search.html" class="list-group-item list-group-item-action">afgwerfga</a>
-            <a href="search.html" class="list-group-item list-group-item-action">wadwd</a>
-            <a href="search.html" class="list-group-item list-group-item-action">efeh</a>
-            <a href="search.html" class="list-group-item list-group-item-action">gkjri</a>
-            <a href="search.html" class="list-group-item list-group-item-action">opwi</a>
+            <a href="search.php?typeartist=typeartist&info=Vincent Van Gogh" class="list-group-item list-group-item-action">Vincent Van Gogh</a>
+            <a href="search.php?typeartist=typeartist&info=Pablo Picasso" class="list-group-item list-group-item-action">Pablo Picasso</a>
+            <a href="search.php?typeartist=typeartist&info=Paul Cezanne" class="list-group-item list-group-item-action">Paul Cezanne</a>
+            <a href="search.php?typeartist=typeartist&info=Raphael" class="list-group-item list-group-item-action">Raphael</a>
+            <a href="search.php?typeartist=typeartist&info=Piero" class="list-group-item list-group-item-action">Piero</a>
+            <a href="search.php?typeartist=typeartist&info=Henri Matisse" class="list-group-item list-group-item-action">Henri Matisse</a>
+            <a href="search.php?typeartist=typeartist&info=Titian" class="list-group-item list-group-item-action">Titian</a>
         </div>
         <div class="list-group" id="genres-list">
             <span class="list-group-item list-group-item-info">流行流派</span>
-            <a href="search.html" class="list-group-item list-group-item-action">Classic</a>
-            <a href="search.html" class="list-group-item list-group-item-action">Cubuim</a>
-            <a href="search.html" class="list-group-item list-group-item-action">Impresssion</a>
-            <a href="search.html" class="list-group-item list-group-item-action">Banrosn</a>
-            <a href="search.html" class="list-group-item list-group-item-action">nangsu</a>
+            <a href="#" class="list-group-item list-group-item-action">Classic</a>
+            <a href="#" class="list-group-item list-group-item-action">Cubuim</a>
+            <a href="#" class="list-group-item list-group-item-action">Impresssion</a>
+            <a href="#" class="list-group-item list-group-item-action">Banrosn</a>
+            <a href="#" class="list-group-item list-group-item-action">nangsu</a>
         </div>
     </aside>
     <br>

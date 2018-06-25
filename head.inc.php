@@ -24,7 +24,6 @@
             break;
         case 1://detail
             echo '<link rel="stylesheet" href="css/detail.css">';
-            echo '<script type="text/javascript" rel="script" src="js/magnify.js"></script>';
             break;
         case 2://search
             echo '<script type="text/javascript" rel="script" src="js/search_pagination.js"></script>';

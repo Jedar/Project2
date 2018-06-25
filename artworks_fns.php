@@ -6,22 +6,24 @@ define('ITEMNUM',9);
 function getSearchResult($pageIndex){
     $pageIndex = intval($pageIndex);
     global $cnn;
-    $info = (isset($_GET['info']))?$_GET['info']:"";
     $sort = (isset($_GET['sort']))?$_GET['sort']:"";
     $genre = (isset($_GET['genre']))?$_GET['genre']:"";
     $queryGenre = " AND genre = '$genre'";
     $queryInfo = "";
     if (isset($_GET['typetitle'])){
-        $queryInfo.="OR title LIKE '%$info%'";
+        $info = $_GET['typetitle'];
+        $queryInfo.="AND title LIKE '%$info%'";
     }
     if (isset($_GET['typeartist'])){
-        $queryInfo.="OR artist LIKE '%$info%'";
+        $info = $_GET['typeartist'];
+        $queryInfo.="AND artist LIKE '%$info%'";
     }
     if (isset($_GET['typedescription'])){
-        $queryInfo.="OR description LIKE '%$info%'";
+        $info = $_GET['typedescription'];
+        $queryInfo.="AND description LIKE '%$info%'";
     }
     if ($queryInfo != ""){
-        $queryInfo = substr($queryInfo,3);
+        $queryInfo = substr($queryInfo,4);
         $queryInfo = "(".$queryInfo.")";
         $queryInfo = " WHERE ".$queryInfo." AND orderID IS NULL";
     }else{

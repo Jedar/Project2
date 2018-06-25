@@ -87,7 +87,7 @@ $(document).ready(function () {
             rgstName.next().addClass("hidden");
             registerArr[0]=true;
         }
-    };
+    }
     function checkPsw() {
         registerArr[1]=false;
         if (rgstPsw.val()===""){
@@ -96,6 +96,10 @@ $(document).ready(function () {
         }
         else if(rgstPsw.val().length < 6){
             rgstPsw.next().html(getInfo("密码长度不能小于6"));
+            rgstPsw.next().removeClass("hidden");
+        }
+        else if(rgstPsw.val().match("^[0-9]*$")){
+            rgstPsw.next().html(getInfo("密码不能全为数字"));
             rgstPsw.next().removeClass("hidden");
         }
         else if(rgstPsw.val()===rgstName.val()){
@@ -110,7 +114,7 @@ $(document).ready(function () {
             rgstPsw.next().addClass("hidden");
             registerArr[1]=true;
         }
-    };
+    }
     function checkPswSure() {
         registerArr[2]=false;
         if (rgstSure.val()===""){
@@ -125,7 +129,7 @@ $(document).ready(function () {
             rgstSure.next().addClass("hidden");
             registerArr[2]=true;
         }
-    };
+    }
     function checkEmail() {
         registerArr[3]=false;
         if (rgstEmail.val()===""){
@@ -140,30 +144,30 @@ $(document).ready(function () {
             rgstEmail.next().addClass("hidden");
             registerArr[3]=true;
         }
-    };
+    }
     function checkPhone() {
         registerArr[4]=false;
         if (rgstPhone.val()===""){
             rgstPhone.next().html(getInfo("电话为空")).removeClass("hidden");
         }
-        else if (!rgstPhone.val().match("[0-9]{10}$")){
+        else if (!rgstPhone.val().match("[0-9]{11}$")){
             rgstPhone.next().html(getInfo("电话格式错误")).removeClass("hidden");
         }
         else {
             rgstPhone.next().addClass("hidden");
             registerArr[4]=true;
         }
-    };
+    }
     function checkAddress() {
         registerArr[5]=false;
         if (rgstAddress.val()===""){
-            rgstAddress.next().html(getInfo("电话为空")).removeClass("hidden");
+            rgstAddress.next().html(getInfo("地址为空")).removeClass("hidden");
         }
         else {
             rgstAddress.next().addClass("hidden");
             registerArr[5]=true;
         }
-    };
+    }
     function check() {
         if (!userCheck.val()){
             userCheck.siblings("div").html(getInfo("请输入验证码"));
@@ -183,9 +187,10 @@ $(document).ready(function () {
     function checkIsSign() {
         let isSign = $("#top-signin").attr('data-sign');
         if (isSign === '1'){
-            $('.card').html('<div class="alert alert-success">\n' +
+            $('.card-body').html('<div class="alert alert-success">\n' +
                 '  注册成功，用户已登陆\n' +
-                '</div>')
+                '</div>');
+            $('.card-footer').html("");
         }
     }
 });

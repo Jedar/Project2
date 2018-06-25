@@ -17,10 +17,28 @@ $sort = (isset($_GET['sort']))?$_GET['sort']:"";
     <div class="sortbar">
         <form method="get" action="" name="sort">
             <?php
-            echo '<p>排序方式:
+            switch ($sort){
+                case "":
+                    echo '<p>排序方式:
                   价格:<input type="radio" name="sort" value="price" class="sort">
                 热度:<input type="radio" name="sort" value="view" class="sort">
-                标题:<input type="radio" name="sort" value="title" class="sort"></p>'
+                标题:<input type="radio" name="sort" value="title" class="sort"></p>';break;
+                case "price":
+                    echo '<p>排序方式:
+                  价格:<input type="radio" name="sort" value="price" class="sort" checked>
+                热度:<input type="radio" name="sort" value="view" class="sort">
+                标题:<input type="radio" name="sort" value="title" class="sort"></p>';break;
+                case "view":
+                    echo '<p>排序方式:
+                  价格:<input type="radio" name="sort" value="price" class="sort">
+                热度:<input type="radio" name="sort" value="view" class="sort" checked>
+                标题:<input type="radio" name="sort" value="title" class="sort"></p>';break;
+                case "title":
+                    echo '<p>排序方式:
+                  价格:<input type="radio" name="sort" value="price" class="sort">
+                热度:<input type="radio" name="sort" value="view" class="sort">
+                标题:<input type="radio" name="sort" value="title" class="sort" checked></p>';break;
+            }
             ?>
         </form>
     </div>

@@ -5,6 +5,9 @@ $(document).ready(function () {
     let bt_confirm_delete = $("#bt-confirm-delete");
     let div_recharge = $("#recharge-input");
     let bt_confirm_cancel = $("#bt-confirm-cancel");
+    let search_title = $("#search-title");
+    let search_artist = $("#search-artist");
+    let search_description = $("#search-description");
     bt_confirm_cancel.detach();
     bt_logout.detach();
     bt_confirm.detach();
@@ -73,16 +76,43 @@ $(document).ready(function () {
             }
         })
     });
+    $("input[name='type']").on('change',function () {
+        if ($(this).attr('value') === 'typetitle'){
+            if (this.checked){
+                search_title.removeClass('hidden');
+            }else {
+                search_title.addClass('hidden');
+            }
+        }if ($(this).attr('value') === 'typeartist'){
+            if (this.checked){
+                search_artist.removeClass('hidden');
+            }else {
+                search_artist.addClass('hidden');
+            }
+        }if ($(this).attr('value') === 'typedescription'){
+            if (this.checked){
+                search_description.removeClass('hidden');
+            }else {
+                search_description.addClass('hidden');
+            }
+        }
+    });
     $("#bt-search").on('click',function () {
         let str = '';
         let checkDom = document.getElementsByName('type');
-        for (let i = 0; i < checkDom.length; i++){
-            if (checkDom[i].checked){
-                str += "&"+checkDom[i].value+"="+checkDom[i].value;
-            }
+        if (checkDom[0].checked){
+            str += "&"+checkDom[0].value+"="+search_title.val();
         }
-        let info = $("#search-input").val();
-        location.assign('search.php?info='+info+str);
+        if (checkDom[1].checked){
+            str += "&"+checkDom[1].value+"="+search_artist.val();
+        }
+        if (checkDom[2].checked){
+            str += "&"+checkDom[2].value+"="+search_description.val();
+        }
+        if (str){
+            str = str.substr(1);
+            location.assign('search.php?'+str);
+        }
     });
     $("#bt-addToCart").on('click',function () {
         if ($(this).is('.disabled')){

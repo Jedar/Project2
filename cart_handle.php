@@ -87,6 +87,7 @@ try{
                 $errorType = 8;
                 throw new Exception('occur an set balance error');
             }
+            $_SESSION['balance']-=$totalPrice;
             $orderID = insert_orders($userID,$totalPrice);
             if (!$orderID){
                 $errorType = 9;
@@ -102,6 +103,8 @@ try{
                     delete($userID,$id);
                     $list = get_liker($id);
                     $artwork = getArtwork($id);
+                    $message = '尊敬的用户，</br>您上传的艺术品'.$artwork['title'].'已经被'.$_SESSION['name'].'收藏家购买。</br>';
+                    sendMessage(1,$owner,$message);
                     foreach ($list as $value){
                         $message = '尊敬的用户，</br>很抱歉您购物车中的艺术品'.$artwork['title'].'已经被其他收藏家购买。</br>希望您下次能及时购买。';
                         sendMessage(1,$value['userID'],$message);

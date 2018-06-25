@@ -4,11 +4,13 @@
 <?php include_once 'head.inc.php'; ?>
 <body>
 <?php include_once 'nav.inc.php'; ?>
+<?php include_once 'users_fns.php';?>
 <?php include_once 'carts_fns.php';?>
 <?php include_once 'artworks_fns.php';?>
 <?php include_once 'orders_fns.php';?>
 <?php
 $userID = $_SESSION['userID'];
+$_SESSION['balance'] = getBalance($userID);
 ?>
 <main class="container">
     <div class="row justify-content-center">

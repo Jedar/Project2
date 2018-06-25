@@ -84,9 +84,10 @@ $(document).ready(function () {
     function checkIsSign() {
         let isSign = $("#top-signin").attr('data-sign');
         if (isSign === '1'){
-            $('.card').html('<div class="alert alert-success">\n' +
+            $('.card-body').html('<div class="alert alert-success">\n' +
                 '  登陆成功\n' +
-                '</div>')
+                '</div>');
+            $('.card-footer').html("");
         }
     }
 });

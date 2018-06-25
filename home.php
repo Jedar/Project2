@@ -59,7 +59,7 @@ function getDescription($des){
             <div class="carousel-caption">
                 <h3>'.$rowView['title'].'</h3>
                 <p>'.getDescription($rowView['description']).'</p>
-                <button type="button" class="btn btn-light btn-lg" >Learn More</button>
+                <a type="button" class="btn btn-light btn-lg"  href="detail.php?itemID='.$rowView['artworkID'].'">Learn More</a>
             </div>';
             $rowView = $resultView->fetch_assoc();
             ?>
@@ -70,7 +70,7 @@ function getDescription($des){
             <div class="carousel-caption">
                 <h3>'.$rowView['title'].'</h3>
                 <p>'.getDescription($rowView['description']).'</p>
-                <button type="button" class="btn btn-light btn-lg" >Learn More</button>
+                <a type="button" class="btn btn-light btn-lg"  href="detail.php?itemID='.$rowView['artworkID'].'">Learn More</a>
             </div>';
             $rowView = $resultView->fetch_assoc();
             ?>
@@ -81,7 +81,7 @@ function getDescription($des){
             <div class="carousel-caption">
                 <h3>'.$rowView['title'].'</h3>
                 <p>'.getDescription($rowView['description']).'</p>
-                <button type="button" class="btn btn-light btn-lg" >Learn More</button>
+                <a type="button" class="btn btn-light btn-lg" href="detail.php?itemID='.$rowView['artworkID'].'">Learn More</a>
             </div>';
             ?>
         </div>
@@ -104,7 +104,7 @@ function getDescription($des){
         echo '<div class="col-md-7">
             <h2 class="featurete-heading">'.$rowTime['title'].'</h2>
             <p class="lead">'.getDescription($rowTime['description']).'</p>
-            <button type="button" class="btn btn-primary">View Details</button>
+            <a type="button" class="btn btn-primary"  href="detail.php?itemID='.$rowTime['artworkID'].'">View Details</a>
         </div>
         <div class="col-md-5">
             <img src="resources/img/'.$rowTime['imageFileName'].'">
@@ -118,7 +118,7 @@ function getDescription($des){
         echo '<div class="col-md-7 order-2">
             <h2 class="featurete-heading">'.$rowTime['title'].'</h2>
             <p class="lead">'.getDescription($rowTime['description']).'</p>
-            <button type="button" class="btn btn-primary">View Details</button>
+            <a type="button" class="btn btn-primary"  href="detail.php?itemID='.$rowTime['artworkID'].'">View Details</a>
         </div>
         <div class="col-md-5 order-1">
             <img src="resources/img/'.$rowTime['imageFileName'].'">
@@ -132,7 +132,7 @@ function getDescription($des){
         echo '<div class="col-md-7">
             <h2 class="featurete-heading">'.$rowTime['title'].'</h2>
             <p class="lead">'.getDescription($rowTime['description']).'</p>
-            <button type="button" class="btn btn-primary">View Details</button>
+            <a type="button" class="btn btn-primary"  href="detail.php?itemID='.$rowTime['artworkID'].'">View Details</a>
         </div>
         <div class="col-md-5">
             <img src="resources/img/'.$rowTime['imageFileName'].'">
